@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slides | Tyler Malone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --gold: #d4a843;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 2rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.3em;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5em;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .card .date {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: var(--gold);
+      margin-top: 1em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    footer {
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Slides</h1>
+  <p class="subtitle">Presentations by Tyler Malone</p>
+
+  <div class="grid">
+    <a href="astronomy-scouting/" class="card">
+      <h2>Astronomy &amp; Scouting</h2>
+      <p>A 115-year partnership between astronomy and Scouting America, plus introducing the "Scout the Moon" program proposal for the Barnard Astronomical Society.</p>
+      <span class="date">March 2026 &middot; BAS Meeting</span>
+    </a>
+
+    <!-- Add more presentations here:
+    <a href="another-talk/" class="card">
+      <h2>Talk Title</h2>
+      <p>Description.</p>
+      <span class="date">Date &middot; Venue</span>
+    </a>
+    -->
+  </div>
+
+  <footer>
+    <a href="https://rtylermalone.com">rtylermalone.com</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,765 @@
+/*
+ * Starfield — Reveal.js Theme
+ * A deep-space observatory aesthetic for astronomy presentations
+ * by Tyler Malone / BAS
+ *
+ * Standalone theme — replaces black.css entirely.
+ * Overrides Reveal's --r-* variables so structural rules work correctly,
+ * then layers custom styling on top.
+ */
+
+/* ============================================
+   FONTS
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   REVEAL.JS VARIABLE OVERRIDES
+   These feed into reveal.css's own selectors
+   ============================================ */
+:root {
+  /* Starfield palette */
+  --sf-bg-primary: #0a0e1a;
+  --sf-bg-secondary: #111827;
+  --sf-bg-card: rgba(255, 255, 255, 0.035);
+  --sf-text-primary: #e8eaf0;
+  --sf-text-secondary: #9ca3b4;
+  --sf-text-muted: #6b7280;
+  --sf-accent-gold: #d4a843;
+  --sf-accent-gold-light: #f0d078;
+  --sf-accent-blue: #60a5fa;
+  --sf-accent-blue-dark: #3b82f6;
+  --sf-accent-teal: #5eead4;
+  --sf-border: rgba(255, 255, 255, 0.08);
+  --sf-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Reveal core overrides */
+  --r-background-color: var(--sf-bg-primary);
+  --r-main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --r-main-font-size: 82px;
+  --r-main-color: var(--sf-text-primary);
+  --r-block-margin: 16px;
+  --r-heading-margin: 0 0 0.35em 0;
+  --r-heading-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --r-heading-color: var(--sf-text-primary);
+  --r-heading-line-height: 1.2;
+  --r-heading-letter-spacing: -0.01em;
+  --r-heading-text-transform: none;
+  --r-heading-text-shadow: none;
+  --r-heading-font-weight: 700;
+  --r-heading1-text-shadow: none;
+  --r-heading1-size: 2.4em;
+  --r-heading2-size: 1.8em;
+  --r-heading3-size: 1.3em;
+  --r-heading4-size: 1.1em;
+  --r-code-font: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --r-link-color: var(--sf-accent-blue);
+  --r-link-color-dark: var(--sf-accent-blue-dark);
+  --r-link-color-hover: var(--sf-accent-blue);
+  --r-selection-background-color: rgba(212, 168, 67, 0.35);
+  --r-selection-color: #fff;
+}
+
+/* ============================================
+   BACKGROUND — ANIMATED STARFIELD
+   ============================================ */
+.reveal-viewport {
+  background: var(--sf-bg-primary);
+  background-image:
+    /* Subtle nebula washes */
+    radial-gradient(ellipse at 18% 45%, rgba(59, 130, 246, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 20%, rgba(212, 168, 67, 0.045) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(94, 234, 212, 0.03) 0%, transparent 45%);
+}
+
+/* Animated star layers — on .reveal-viewport so they render above its background */
+.reveal-viewport::before,
+.reveal-viewport::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Layer 1: dense small-medium stars — fast twinkle */
+.reveal-viewport::before {
+  background-image:
+    radial-gradient(1.5px 1.5px at 7% 12%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 15% 68%, rgba(255,255,255,0.22), transparent),
+    radial-gradient(1.5px 1.5px at 23% 34%, rgba(255,255,255,0.28), transparent),
+    radial-gradient(1.5px 1.5px at 31% 82%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 38% 8%, rgba(255,255,255,0.26), transparent),
+    radial-gradient(1.5px 1.5px at 44% 55%, rgba(255,255,255,0.18), transparent),
+    radial-gradient(1.5px 1.5px at 52% 27%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 59% 91%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 67% 45%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1.5px 1.5px at 74% 73%, rgba(255,255,255,0.16), transparent),
+    radial-gradient(1.5px 1.5px at 81% 18%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 88% 60%, rgba(255,255,255,0.18), transparent),
+    radial-gradient(1.5px 1.5px at 94% 38%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1.5px 1.5px at 3% 50%, rgba(255,255,255,0.14), transparent),
+    radial-gradient(1.5px 1.5px at 48% 4%, rgba(255,255,255,0.22), transparent),
+    radial-gradient(1.5px 1.5px at 71% 88%, rgba(255,255,255,0.18), transparent),
+    radial-gradient(1.5px 1.5px at 19% 95%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 56% 42%, rgba(255,255,255,0.12), transparent),
+    radial-gradient(1.5px 1.5px at 83% 3%, rgba(255,255,255,0.24), transparent),
+    radial-gradient(1.5px 1.5px at 36% 67%, rgba(255,255,255,0.18), transparent);
+  animation: starTwinkle1 3.5s ease-in-out infinite alternate;
+}
+
+/* Layer 2: sparse bright accent stars — offset fast twinkle */
+.reveal-viewport::after {
+  background-image:
+    radial-gradient(2.5px 2.5px at 12% 22%, rgba(240,208,120,0.35), transparent),
+    radial-gradient(2px 2px at 28% 78%, rgba(96,165,250,0.3), transparent),
+    radial-gradient(2.5px 2.5px at 45% 15%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(2px 2px at 62% 65%, rgba(240,208,120,0.28), transparent),
+    radial-gradient(2.5px 2.5px at 78% 35%, rgba(96,165,250,0.35), transparent),
+    radial-gradient(2px 2px at 91% 80%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(2.5px 2.5px at 8% 88%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 55% 50%, rgba(240,208,120,0.25), transparent),
+    radial-gradient(2.5px 2.5px at 70% 10%, rgba(255,255,255,0.32), transparent),
+    radial-gradient(2px 2px at 35% 42%, rgba(96,165,250,0.22), transparent);
+  animation: starTwinkle2 5s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle1 {
+  0%   { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+@keyframes starTwinkle2 {
+  0%   { opacity: 1; }
+  100% { opacity: 0.45; }
+}
+
+/* ============================================
+   SLIDE LAYOUT
+   ============================================ */
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  font-family: var(--r-main-font);
+  color: var(--sf-text-primary);
+  font-weight: 400;
+  line-height: 1.45;
+  padding: 20px 40px;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--r-heading-font);
+  color: var(--r-heading-color);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: var(--r-heading-margin);
+  text-transform: none;
+  text-shadow: none;
+  word-wrap: break-word;
+}
+
+.reveal h1 { font-size: var(--r-heading1-size); }
+.reveal h2 { font-size: var(--r-heading2-size); }
+
+.reveal h3 {
+  font-size: var(--r-heading3-size);
+  font-family: var(--r-main-font);
+  font-weight: 600;
+  color: var(--sf-accent-gold);
+}
+
+.reveal h4 {
+  font-size: var(--r-heading4-size);
+  font-family: var(--r-main-font);
+  font-weight: 500;
+  color: var(--sf-accent-blue);
+}
+
+.reveal p {
+  font-size: 0.95em;
+  line-height: 1.7;
+  color: var(--sf-text-secondary);
+  margin: 0 0 0.8em 0;
+}
+
+.reveal .slides section > p:first-of-type {
+  color: var(--sf-text-primary);
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+.reveal ul,
+.reveal ol {
+  display: block;
+  text-align: left;
+  margin-left: 0.6em;
+  font-size: 0.95em;
+  color: var(--sf-text-secondary);
+}
+
+.reveal ol {
+  list-style-type: decimal;
+}
+
+.reveal ul {
+  list-style-type: disc;
+}
+
+.reveal li {
+  margin-bottom: 0.35em;
+  line-height: 1.4;
+}
+
+.reveal li::marker {
+  color: var(--sf-accent-gold);
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ul,
+.reveal ol ol {
+  display: block;
+  margin-top: 0.3em;
+  margin-left: 1.4em;
+  font-size: 0.92em;
+}
+
+.reveal ul ul li::marker {
+  color: var(--sf-accent-blue);
+}
+
+.reveal ul ul {
+  list-style-type: square;
+}
+
+.reveal ul ul ul {
+  list-style-type: circle;
+}
+
+/* ============================================
+   STRONG, EM, LINKS
+   ============================================ */
+.reveal strong,
+.reveal b {
+  color: var(--sf-text-primary);
+  font-weight: 600;
+}
+
+.reveal em {
+  color: var(--sf-accent-gold-light);
+  font-style: italic;
+}
+
+.reveal a {
+  color: var(--sf-accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reveal a:hover {
+  color: var(--sf-accent-blue);
+  border-bottom-color: var(--sf-accent-blue);
+  text-shadow: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+/* ============================================
+   BLOCKQUOTES
+   ============================================ */
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: auto;
+  margin: 0.8em 0;
+  padding: 0.8em 1.2em;
+  background: var(--sf-bg-card);
+  border-left: 3px solid var(--sf-accent-gold);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--sf-accent-gold-light);
+  font-size: 0.85em;
+  box-shadow: none;
+}
+
+.reveal blockquote p,
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: block;
+  color: var(--sf-accent-gold-light);
+  font-style: italic;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.reveal table {
+  margin: 0.8em 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.82em;
+}
+
+.reveal table th {
+  background: rgba(212, 168, 67, 0.12);
+  color: var(--sf-accent-gold);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.6em 0.8em;
+  border-bottom: 2px solid var(--sf-accent-gold);
+}
+
+.reveal table td {
+  padding: 0.5em 0.8em;
+  border-bottom: 1px solid var(--sf-border);
+  color: var(--sf-text-secondary);
+  vertical-align: top;
+}
+
+.reveal table tr:last-child td,
+.reveal table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.reveal table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.reveal img {
+  margin: 0;
+}
+
+.reveal section img {
+  border: none;
+  box-shadow: 0 4px 24px var(--sf-shadow);
+  border-radius: 6px;
+  max-height: 55vh;
+}
+
+.reveal section img.no-shadow {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.reveal section img.badge {
+  box-shadow: none;
+  border-radius: 0;
+  max-height: 120px;
+  vertical-align: middle;
+}
+
+.reveal section img.portrait {
+  border-radius: 50%;
+  max-height: 140px;
+  box-shadow: 0 2px 12px var(--sf-shadow);
+}
+
+/* ============================================
+   TITLE SLIDE
+   ============================================ */
+.reveal .title-slide {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .title-slide h1 {
+  font-size: 2.6em;
+  margin-bottom: 0.15em;
+  background: linear-gradient(
+    135deg,
+    var(--sf-text-primary) 0%,
+    var(--sf-accent-gold-light) 50%,
+    var(--sf-text-primary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.reveal .title-slide .subtitle {
+  font-family: var(--r-main-font);
+  font-size: 0.85em;
+  color: var(--sf-text-secondary);
+  font-weight: 300;
+  margin-bottom: 1.5em;
+  letter-spacing: 0.02em;
+}
+
+.reveal .title-slide .byline {
+  font-family: var(--r-main-font);
+  font-size: 0.62em;
+  color: var(--sf-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--sf-border);
+}
+
+/* Decorative divider above byline */
+.reveal .title-slide .subtitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sf-accent-gold), transparent);
+  margin: 1.5em auto 0;
+}
+
+/* ============================================
+   SECTION HEADER SLIDES
+   ============================================ */
+.reveal .section-header {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .section-header h2 {
+  font-size: 2.4em;
+  margin-bottom: 0.2em;
+  background: linear-gradient(135deg, var(--sf-accent-gold-light), var(--sf-accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(212, 168, 67, 0.15));
+}
+
+.reveal .section-header p {
+  font-size: 0.9em;
+  color: var(--sf-text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Decorative line beneath section headers */
+.reveal .section-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sf-accent-gold), var(--sf-accent-blue));
+  margin: 0.5em auto 0;
+  border-radius: 1px;
+  /* Reset background-clip so the line is visible */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+/* ============================================
+   STAT / NUMBER CALLOUTS
+   ============================================ */
+.reveal .stat {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--sf-accent-gold);
+  line-height: 1.1;
+  display: block;
+  margin: 0.3em 0 0.1em;
+  text-shadow: 0 0 40px rgba(212, 168, 67, 0.2);
+}
+
+.reveal .stat-label {
+  font-family: var(--r-main-font);
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Stat card glass effect */
+.reveal .columns .col:has(.stat) {
+  background: var(--sf-bg-card);
+  border: 1px solid var(--sf-border);
+  border-radius: 10px;
+  padding: 1.2em 0.8em;
+  transition: border-color 0.3s ease;
+}
+
+.reveal .columns .col:has(.stat):hover {
+  border-color: rgba(212, 168, 67, 0.2);
+}
+
+/* ============================================
+   CLOSING / QUOTE SLIDE
+   ============================================ */
+.reveal .closing-slide {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .closing-slide blockquote {
+  border-left: none;
+  text-align: center;
+  font-size: 1.15em;
+  background: none;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.reveal .closing-slide blockquote p {
+  text-align: center;
+}
+
+.reveal .closing-slide .attribution {
+  font-family: var(--r-main-font);
+  font-size: 0.6em;
+  color: var(--sf-text-muted);
+  font-style: normal;
+  margin-top: 0.5em;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================
+   TWO-COLUMN LAYOUT
+   ============================================ */
+.reveal .columns {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+
+.reveal .columns .col {
+  flex: 1;
+}
+
+.reveal .columns .col-narrow {
+  flex: 0.6;
+}
+
+.reveal .columns .col-wide {
+  flex: 1.4;
+}
+
+/* ============================================
+   PORTRAIT GRID
+   ============================================ */
+.reveal .portrait-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4em;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+/* 2-over-3 row layout */
+.reveal .portrait-grid.portrait-grid-2over3 {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8em;
+}
+
+.reveal .portrait-grid .portrait-row {
+  display: flex;
+  gap: 2.5em;
+  justify-content: center;
+}
+
+.reveal .portrait-grid .portrait-item {
+  text-align: center;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.reveal .portrait-grid .portrait-item:hover {
+  transform: translateY(-3px);
+}
+
+.reveal .portrait-grid .portrait-item img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center 20%;
+  box-shadow:
+    0 2px 12px var(--sf-shadow),
+    0 0 0 2px rgba(212, 168, 67, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.reveal .portrait-grid .portrait-item:hover img {
+  box-shadow:
+    0 4px 20px var(--sf-shadow),
+    0 0 0 2px rgba(212, 168, 67, 0.35);
+}
+
+.reveal .portrait-grid .portrait-item .name {
+  font-size: 0.75em;
+  color: var(--sf-text-primary);
+  margin-top: 0.5em;
+  font-weight: 600;
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+.reveal .portrait-grid .portrait-item .role {
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  display: block;
+  line-height: 1.5;
+  margin-top: 0.15em;
+}
+
+/* ============================================
+   SOURCE CITATION
+   ============================================ */
+.reveal .source {
+  font-size: 0.48em;
+  color: var(--sf-text-muted);
+  font-style: italic;
+  margin-top: 1.5em;
+  border-top: 1px solid var(--sf-border);
+  padding-top: 0.5em;
+  opacity: 0.7;
+}
+
+/* ============================================
+   PROGRESS BAR & CONTROLS
+   ============================================ */
+.reveal .progress {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--sf-accent-gold);
+}
+
+.reveal .controls {
+  color: var(--sf-accent-gold);
+}
+
+.reveal .controls button {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.reveal .controls button:hover {
+  opacity: 1;
+}
+
+/* Slide number */
+.reveal .slide-number {
+  font-family: var(--r-main-font);
+  font-size: 0.5em;
+  color: var(--sf-text-muted);
+  background: transparent;
+}
+
+/* ============================================
+   FRAGMENT ANIMATIONS
+   ============================================ */
+.reveal .slides section .fragment {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+/* ============================================
+   TITLE SLIDE LOGOS
+   ============================================ */
+.reveal .title-slide .title-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.reveal .title-slide .title-logos .title-logo {
+  box-shadow: none;
+  border-radius: 0;
+  max-height: 120px;
+  width: auto;
+}
+
+/* ============================================
+   PERSISTENT CORNER LOGOS
+   ============================================ */
+.corner-logo {
+  position: fixed;
+  bottom: 16px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.corner-logo-left {
+  left: 20px;
+}
+
+.corner-logo-right {
+  right: 20px;
+}
+
+.corner-logo img {
+  height: 44px;
+  width: auto;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.corner-logo img:hover {
+  opacity: 0.8;
+}
+
+/* ============================================
+   MISC ELEMENT RESETS
+   ============================================ */
+.reveal sup { vertical-align: super; font-size: smaller; }
+.reveal sub { vertical-align: sub; font-size: smaller; }
+.reveal small { display: inline-block; font-size: 0.6em; line-height: 1.2em; }
+
+/* ============================================
+   PRINT / PDF
+   ============================================ */
+@media print {
+  .reveal-viewport {
+    background: var(--sf-bg-primary) !important;
+  }
+  .reveal-viewport::before,
+  .reveal-viewport::after {
+    display: none;
+  }
+  .backgrounds {
+    background-color: var(--sf-bg-primary);
+  }
+}
