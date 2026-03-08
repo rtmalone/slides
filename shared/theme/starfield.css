@@ -36,10 +36,10 @@
   /* Reveal core overrides */
   --r-background-color: var(--sf-bg-primary);
   --r-main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-  --r-main-font-size: 82px;
+  --r-main-font-size: 22px;
   --r-main-color: var(--sf-text-primary);
   --r-block-margin: 16px;
-  --r-heading-margin: 0 0 0.35em 0;
+  --r-heading-margin: 0 0 0.6em 0;
   --r-heading-font: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --r-heading-color: var(--sf-text-primary);
   --r-heading-line-height: 1.2;
@@ -141,13 +141,17 @@
   text-align: left;
 }
 
+.reveal {
+  font-size: var(--r-main-font-size) !important;
+}
+
 .reveal .slides section,
 .reveal .slides section > section {
   font-family: var(--r-main-font);
   color: var(--sf-text-primary);
   font-weight: 400;
-  line-height: 1.45;
-  padding: 20px 40px;
+  line-height: 1.6;
+  padding: 30px 50px;
 }
 
 /* ============================================
@@ -219,8 +223,8 @@
 }
 
 .reveal li {
-  margin-bottom: 0.35em;
-  line-height: 1.4;
+  margin-bottom: 0.6em;
+  line-height: 1.5;
 }
 
 .reveal li::marker {
