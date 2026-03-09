@@ -1,0 +1,876 @@
+/*
+ * Campfire — Reveal.js Theme
+ * A warm trail-guide aesthetic for Scouting presentations
+ * by Tyler Malone
+ *
+ * Standalone theme — replaces black.css entirely.
+ * Overrides Reveal's --r-* variables so structural rules work correctly,
+ * then layers custom styling on top.
+ *
+ * Design language: kraft paper, trail maps, field guides.
+ * Light warm background — the opposite of the dark starfield theme.
+ */
+
+/* ============================================
+   FONTS
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ============================================
+   REVEAL.JS VARIABLE OVERRIDES
+   These feed into reveal.css's own selectors
+   ============================================ */
+:root {
+  /* Campfire palette — warm kraft paper with scout accents */
+  --sf-bg-primary: #f5efe4;
+  --sf-bg-secondary: #ebe3d4;
+  --sf-bg-card: rgba(0, 63, 135, 0.05);
+  --sf-text-primary: #2a2118;
+  --sf-text-secondary: #5c4f3d;
+  --sf-text-muted: #8a7d6b;
+  --sf-accent-gold: #c5930a;
+  --sf-accent-gold-light: #fdd023;
+  --sf-accent-blue: #003f87;
+  --sf-accent-blue-dark: #002a5c;
+  --sf-accent-red: #ce1126;
+  --sf-accent-teal: #2e7d6a;
+  --sf-border: rgba(42, 33, 24, 0.12);
+  --sf-shadow: rgba(42, 33, 24, 0.15);
+
+  /* Reveal core overrides */
+  --r-background-color: var(--sf-bg-primary);
+  --r-main-font: 'Nunito', 'Segoe UI', sans-serif;
+  --r-main-font-size: 22px;
+  --r-main-color: var(--sf-text-primary);
+  --r-block-margin: 16px;
+  --r-heading-margin: 0 0 0.6em 0;
+  --r-heading-font: 'Barlow Condensed', 'Impact', sans-serif;
+  --r-heading-color: var(--sf-accent-blue);
+  --r-heading-line-height: 1.1;
+  --r-heading-letter-spacing: 0.02em;
+  --r-heading-text-transform: uppercase;
+  --r-heading-text-shadow: none;
+  --r-heading-font-weight: 700;
+  --r-heading1-text-shadow: none;
+  --r-heading1-size: 2.6em;
+  --r-heading2-size: 1.9em;
+  --r-heading3-size: 1.25em;
+  --r-heading4-size: 1.1em;
+  --r-code-font: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --r-link-color: var(--sf-accent-red);
+  --r-link-color-dark: #a00d1e;
+  --r-link-color-hover: var(--sf-accent-blue);
+  --r-selection-background-color: rgba(206, 17, 38, 0.2);
+  --r-selection-color: var(--sf-text-primary);
+}
+
+/* ============================================
+   BACKGROUND — KRAFT PAPER TEXTURE
+   ============================================ */
+.reveal-viewport {
+  background-color: var(--sf-bg-primary);
+  background-image:
+    /* Subtle paper fiber grain via repeating micro-gradients */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(42, 33, 24, 0.012) 2px,
+      rgba(42, 33, 24, 0.012) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(42, 33, 24, 0.008) 3px,
+      rgba(42, 33, 24, 0.008) 6px
+    ),
+    /* Warm vignette — darker at edges */
+    radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(42, 33, 24, 0.06) 100%);
+}
+
+/* Paper texture overlay — subtle noise via SVG filter */
+.reveal-viewport::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 1;
+}
+
+/* Top edge — scout red stripe accent */
+.reveal-viewport::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--sf-accent-blue) 0%,
+    var(--sf-accent-blue) 33%,
+    var(--sf-accent-red) 33%,
+    var(--sf-accent-red) 66%,
+    var(--sf-accent-gold-light) 66%,
+    var(--sf-accent-gold-light) 100%
+  );
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ============================================
+   SLIDE LAYOUT
+   ============================================ */
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal {
+  font-size: var(--r-main-font-size) !important;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  font-family: var(--r-main-font);
+  color: var(--sf-text-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Constrain all direct children to prevent horizontal overflow */
+.reveal .slides section > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--r-heading-font);
+  color: var(--r-heading-color);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin: var(--r-heading-margin);
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;
+}
+
+.reveal h1 { font-size: var(--r-heading1-size); }
+.reveal h2 {
+  font-size: var(--r-heading2-size);
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid var(--sf-accent-red);
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.reveal h3 {
+  font-size: var(--r-heading3-size);
+  font-family: var(--r-heading-font);
+  font-weight: 600;
+  color: var(--sf-accent-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.reveal h4 {
+  font-size: var(--r-heading4-size);
+  font-family: var(--r-main-font);
+  font-weight: 700;
+  color: var(--sf-accent-blue);
+  text-transform: none;
+}
+
+.reveal p {
+  font-size: 0.95em;
+  line-height: 1.7;
+  color: var(--sf-text-secondary);
+  margin: 0 0 0.8em 0;
+}
+
+.reveal .slides section > p:first-of-type {
+  color: var(--sf-text-primary);
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+.reveal ul,
+.reveal ol {
+  display: block;
+  text-align: left;
+  margin-left: 0.6em;
+  font-size: 0.95em;
+  color: var(--sf-text-secondary);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.reveal ol {
+  list-style-type: decimal;
+}
+
+.reveal ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.reveal ul > li {
+  position: relative;
+  padding-left: 1.2em;
+}
+
+/* Custom triangle marker — trail blaze */
+.reveal ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--sf-accent-red);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.reveal li {
+  margin-bottom: 0.6em;
+  line-height: 1.5;
+}
+
+.reveal li::marker {
+  color: var(--sf-accent-red);
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ul,
+.reveal ol ol {
+  display: block;
+  margin-top: 0.3em;
+  margin-left: 0.8em;
+  font-size: 0.92em;
+}
+
+.reveal ul ul > li::before {
+  border-left-color: var(--sf-accent-blue);
+  border-left-width: 5px;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+}
+
+.reveal ul ul {
+  list-style-type: none;
+}
+
+.reveal ul ul ul {
+  list-style-type: circle;
+}
+
+.reveal ul ul ul > li::before {
+  display: none;
+}
+
+/* ============================================
+   STRONG, EM, LINKS
+   ============================================ */
+.reveal strong,
+.reveal b {
+  color: var(--sf-text-primary);
+  font-weight: 700;
+}
+
+.reveal em {
+  color: var(--sf-accent-red);
+  font-style: italic;
+}
+
+.reveal a {
+  color: var(--sf-accent-red);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(206, 17, 38, 0.25);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reveal a:hover {
+  color: var(--sf-accent-blue);
+  border-bottom-color: var(--sf-accent-blue);
+  text-shadow: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+/* ============================================
+   BLOCKQUOTES — camp sign / trail marker style
+   ============================================ */
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0.8em 0;
+  padding: 1em 1.4em;
+  box-sizing: border-box;
+  background: rgba(0, 63, 135, 0.06);
+  border: none;
+  border-top: 4px solid var(--sf-accent-blue);
+  border-radius: 0 0 4px 4px;
+  font-style: italic;
+  color: var(--sf-text-primary);
+  font-size: 0.88em;
+  box-shadow: 0 2px 8px rgba(42, 33, 24, 0.08);
+}
+
+/* Decorative quotation mark */
+.reveal blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.15em;
+  left: 0.3em;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3em;
+  font-weight: 800;
+  color: var(--sf-accent-blue);
+  opacity: 0.15;
+  line-height: 1;
+}
+
+.reveal blockquote p,
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: block;
+  color: var(--sf-text-primary);
+  font-style: italic;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.reveal table {
+  margin: 0.8em 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.82em;
+}
+
+.reveal table th {
+  background: var(--sf-accent-blue);
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.6em 0.8em;
+  border-bottom: none;
+}
+
+.reveal table td {
+  padding: 0.5em 0.8em;
+  border-bottom: 1px solid var(--sf-border);
+  color: var(--sf-text-secondary);
+  vertical-align: top;
+}
+
+.reveal table tr:last-child td,
+.reveal table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.reveal table tbody tr:nth-child(even) td {
+  background: rgba(0, 63, 135, 0.03);
+}
+
+.reveal table tbody tr:hover td {
+  background: rgba(206, 17, 38, 0.05);
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+.reveal img,
+.reveal video,
+.reveal iframe {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.reveal img {
+  margin: 0;
+}
+
+.reveal section img {
+  border: none;
+  box-shadow:
+    0 2px 12px var(--sf-shadow),
+    0 0 0 1px var(--sf-border);
+  border-radius: 3px;
+  max-height: 55vh;
+}
+
+.reveal section img.no-shadow {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.reveal section img.badge {
+  box-shadow: none;
+  border-radius: 0;
+  max-height: 120px;
+  vertical-align: middle;
+}
+
+.reveal section img.portrait {
+  border-radius: 50%;
+  max-height: 140px;
+  box-shadow:
+    0 2px 8px var(--sf-shadow),
+    0 0 0 3px var(--sf-accent-blue);
+}
+
+/* Resource image — full display for flyers/surveys */
+.reveal section img.resource {
+  max-height: 65vh;
+  border-radius: 3px;
+  box-shadow:
+    0 4px 20px var(--sf-shadow),
+    0 0 0 1px var(--sf-border);
+}
+
+/* ============================================
+   TITLE SLIDE
+   ============================================ */
+.reveal .title-slide {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .title-slide h1 {
+  font-size: 3em;
+  margin-bottom: 0.05em;
+  color: var(--sf-accent-blue);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  /* No gradient text — solid, confident, like a troop banner */
+}
+
+.reveal .title-slide .subtitle {
+  font-family: var(--r-main-font);
+  font-size: 0.9em;
+  color: var(--sf-text-secondary);
+  font-weight: 400;
+  margin-bottom: 1.5em;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.reveal .title-slide .byline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 1.2em;
+  border-top: none;
+  position: relative;
+}
+
+/* Three-color stripe divider above byline (like merit badge sash) */
+.reveal .title-slide .byline::before {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 0 auto 1.2em;
+  background: linear-gradient(
+    90deg,
+    var(--sf-accent-blue) 0%,
+    var(--sf-accent-blue) 33%,
+    var(--sf-accent-red) 33%,
+    var(--sf-accent-red) 66%,
+    var(--sf-accent-gold-light) 66%,
+    var(--sf-accent-gold-light) 100%
+  );
+  border-radius: 2px;
+}
+
+/* Remove the old subtitle::after divider */
+.reveal .title-slide .subtitle::after {
+  display: none;
+}
+
+/* ============================================
+   SECTION HEADER SLIDES
+   ============================================ */
+.reveal .section-header {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .section-header h2 {
+  font-size: 2.6em;
+  font-weight: 800;
+  margin-bottom: 0.3em;
+  color: var(--sf-accent-blue);
+  border-bottom: none;
+  /* Shield/badge shape via box — no gradient text */
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  border: 4px solid var(--sf-accent-blue);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Corner accent marks on the shield */
+.reveal .section-header h2::before,
+.reveal .section-header h2::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--sf-accent-red);
+  border-style: solid;
+}
+
+.reveal .section-header h2::before {
+  top: -2px;
+  left: -2px;
+  border-width: 3px 0 0 3px;
+}
+
+.reveal .section-header h2::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 3px 3px 0;
+}
+
+.reveal .section-header p {
+  font-size: 0.9em;
+  color: var(--sf-text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================
+   STAT / NUMBER CALLOUTS
+   ============================================ */
+.reveal .stat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3.2em;
+  font-weight: 800;
+  color: var(--sf-accent-red);
+  line-height: 1;
+  display: block;
+  margin: 0.3em 0 0.1em;
+  text-shadow: none;
+}
+
+.reveal .stat-label {
+  font-family: var(--r-main-font);
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Stat card — solid feel, not glassy */
+.reveal .columns .col:has(.stat) {
+  background: rgba(0, 63, 135, 0.04);
+  border: 2px solid var(--sf-border);
+  border-top: 4px solid var(--sf-accent-blue);
+  border-radius: 0 0 4px 4px;
+  padding: 1.2em 0.8em;
+  transition: border-top-color 0.3s ease;
+}
+
+.reveal .columns .col:has(.stat):hover {
+  border-top-color: var(--sf-accent-red);
+}
+
+/* ============================================
+   CLOSING / QUOTE SLIDE
+   ============================================ */
+.reveal .closing-slide {
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.reveal .closing-slide blockquote {
+  border-top: none;
+  text-align: center;
+  font-size: 1.15em;
+  background: none;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  box-shadow: none;
+}
+
+.reveal .closing-slide blockquote::before {
+  position: static;
+  display: block;
+  font-size: 2.5em;
+  opacity: 0.2;
+  margin-bottom: -0.2em;
+}
+
+.reveal .closing-slide blockquote p {
+  text-align: center;
+}
+
+.reveal .closing-slide .attribution {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  font-style: normal;
+  margin-top: 0.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   TWO-COLUMN LAYOUT
+   ============================================ */
+.reveal .columns {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+
+.reveal .columns .col {
+  flex: 1;
+}
+
+.reveal .columns .col-narrow {
+  flex: 0.6;
+}
+
+.reveal .columns .col-wide {
+  flex: 1.4;
+}
+
+/* ============================================
+   PORTRAIT GRID
+   ============================================ */
+.reveal .portrait-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4em;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+/* 2-over-3 row layout */
+.reveal .portrait-grid.portrait-grid-2over3 {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8em;
+}
+
+.reveal .portrait-grid .portrait-row {
+  display: flex;
+  gap: 2.5em;
+  justify-content: center;
+}
+
+.reveal .portrait-grid .portrait-item {
+  text-align: center;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.reveal .portrait-grid .portrait-item:hover {
+  transform: translateY(-3px);
+}
+
+.reveal .portrait-grid .portrait-item img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center 20%;
+  box-shadow: 0 2px 8px var(--sf-shadow);
+  border: 3px solid var(--sf-accent-blue);
+  transition: border-color 0.3s ease;
+}
+
+.reveal .portrait-grid .portrait-item:hover img {
+  border-color: var(--sf-accent-red);
+}
+
+.reveal .portrait-grid .portrait-item .name {
+  font-size: 0.75em;
+  color: var(--sf-text-primary);
+  margin-top: 0.5em;
+  font-weight: 700;
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+.reveal .portrait-grid .portrait-item .role {
+  font-size: 0.65em;
+  color: var(--sf-text-muted);
+  display: block;
+  line-height: 1.5;
+  margin-top: 0.15em;
+}
+
+/* ============================================
+   SOURCE CITATION
+   ============================================ */
+.reveal .source {
+  font-size: 0.48em;
+  color: var(--sf-text-muted);
+  font-style: italic;
+  margin-top: 1.5em;
+  border-top: 1px dashed var(--sf-border);
+  padding-top: 0.5em;
+  opacity: 0.7;
+}
+
+/* ============================================
+   PROGRESS BAR & CONTROLS
+   ============================================ */
+.reveal .progress {
+  height: 4px;
+  background: rgba(42, 33, 24, 0.08);
+  color: var(--sf-accent-red);
+}
+
+.reveal .controls {
+  color: var(--sf-accent-blue);
+}
+
+.reveal .controls button {
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.reveal .controls button:hover {
+  opacity: 1;
+}
+
+/* Slide number */
+.reveal .slide-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--sf-text-muted);
+  background: transparent;
+}
+
+/* ============================================
+   FRAGMENT ANIMATIONS
+   ============================================ */
+.reveal .slides section .fragment {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+/* ============================================
+   TITLE SLIDE LOGOS
+   ============================================ */
+.reveal .title-slide .title-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.reveal .title-slide .title-logos .title-logo {
+  box-shadow: none;
+  border-radius: 0;
+  max-height: 120px;
+  width: auto;
+}
+
+/* ============================================
+   PERSISTENT CORNER LOGOS
+   ============================================ */
+.corner-logo {
+  position: fixed;
+  top: 12px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.corner-logo-left {
+  left: 20px;
+}
+
+.corner-logo-right {
+  right: 20px;
+}
+
+.corner-logo img {
+  height: 44px;
+  width: auto;
+  opacity: 0.9;
+  background: var(--sf-accent-blue);
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.corner-logo img:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   MISC ELEMENT RESETS
+   ============================================ */
+.reveal sup { vertical-align: super; font-size: smaller; }
+.reveal sub { vertical-align: sub; font-size: smaller; }
+.reveal small { display: inline-block; font-size: 0.6em; line-height: 1.2em; }
+
+/* ============================================
+   PRINT / PDF
+   ============================================ */
+@media print {
+  .reveal-viewport {
+    background: var(--sf-bg-primary) !important;
+  }
+  .reveal-viewport::before,
+  .reveal-viewport::after {
+    display: none;
+  }
+  .backgrounds {
+    background-color: var(--sf-bg-primary);
+  }
+}
