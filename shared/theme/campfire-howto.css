@@ -222,15 +222,15 @@
 /* Download-as-PDF button: corner pill on screen; hidden while presenting fullscreen and in print */
 .pdf-download {
   position: fixed;
-  left: 16px;
-  bottom: 14px;
+  left: clamp(8px, 1.25vw, 16px);
+  bottom: clamp(6px, 1.1vw, 14px);
   z-index: 30;
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
   padding: 0.35em 0.8em;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 15px;
+  font-size: clamp(11px, min(1.17vw, 2.1vh), 15px); /* shrink with the slides on phones */
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;

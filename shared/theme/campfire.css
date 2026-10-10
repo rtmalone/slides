@@ -823,28 +823,32 @@
 /* ============================================
    PERSISTENT CORNER LOGOS
    ============================================ */
+/* Sized to the viewport so the logo shrinks with the slides on phones.
+   44px at 1280x720 (and larger), never below 18px. */
 .corner-logo {
+  --logo-h: clamp(18px, min(3.4vw, 6.1vh), 44px);
   position: fixed;
-  top: 12px;
+  top: calc(var(--logo-h) * 0.27);
   z-index: 30;
   pointer-events: none;
 }
 
 .corner-logo-left {
-  left: 20px;
+  left: calc(var(--logo-h) * 0.45);
 }
 
 .corner-logo-right {
-  right: 20px;
+  right: calc(var(--logo-h) * 0.45);
 }
 
 .corner-logo img {
-  height: 44px;
+  display: block;
+  height: var(--logo-h);
   width: auto;
   opacity: 0.9;
   background: var(--sf-accent-blue);
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: calc(var(--logo-h) * 0.11) calc(var(--logo-h) * 0.18);
+  border-radius: calc(var(--logo-h) * 0.09);
   transition: opacity 0.3s ease;
 }
 
