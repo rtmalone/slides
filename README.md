@@ -8,6 +8,7 @@ Presentation decks hosted at [slides.rtylermalone.com](https://slides.rtylermalo
 | ------------------------------ | ---------------------------- | ---------- | ------------------------------------------------------------- |
 | Astronomy & Scouting           | Barnard Astronomical Society | March 2026 | [View](https://slides.rtylermalone.com/astronomy-scouting/)   |
 | Scoutbook Plus for Den Leaders | Den Leader Training          | Fall 2026  | [View](https://slides.rtylermalone.com/scoutbook-den-leader/) |
+| Scoutbook Plus for Parents     | Parent Orientation           | Fall 2026  | [View](https://slides.rtylermalone.com/scoutbook-parents/)    |
 
 ## Local Preview
 
@@ -34,6 +35,18 @@ python3 -m http.server 8000
 3. Reference the shared theme: `../shared/theme/starfield.css`
 4. Put images in `my-new-talk/images/`
 5. Add an entry to the root `index.html` landing page
+
+## PDF Downloads
+
+The Scoutbook Plus decks have a **Download PDF** button (bottom left; hidden in fullscreen) and a PDF link on their Resources slide. The PDFs are committed next to each deck and must be **rebuilt after editing slides**:
+
+```bash
+npm install        # first time only (installs playwright-core; uses your installed Google Chrome)
+npm run pdf        # rebuild all decks listed in scripts/build-pdfs.mjs
+npm run pdf -- scoutbook-parents   # or just one
+```
+
+To give another deck a PDF, add it to `DECKS` in `scripts/build-pdfs.mjs` and copy the `pdf-download` link from a Scoutbook deck (it needs `shared/theme/campfire-howto.css`).
 
 ## Deployment
 

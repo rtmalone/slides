@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scoutbook Plus for Parents | Tyler Malone</title>
+    <meta
+      name="description"
+      content="A guide to Scoutbook Plus for Cub Scout parents: following your Scout's progress, marking requirements completed, exploring adventures and requirements, and keeping up with the den calendar. Presented by Tyler Malone, Assistant Cubmaster, Pack 3116."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css"
+    />
+    <link rel="stylesheet" href="../shared/theme/campfire.css" id="theme" />
+    <link rel="stylesheet" href="../shared/theme/campfire-howto.css" />
+    <style>
+      /* Highlight the stages a parent owns in the status flow */
+      .reveal .flow .stage.you {
+        border-top-color: var(--sf-accent-gold);
+        background: rgba(253, 208, 35, 0.12);
+      }
+      .reveal .flow .stage.you .who {
+        color: var(--sf-accent-gold);
+        font-weight: 700;
+      }
+
+      /* Do / Don't checklist */
+      .reveal .dodont .col h3 {
+        margin-bottom: 0.4em;
+      }
+      .reveal .dodont .do h3 {
+        color: var(--sf-accent-teal);
+      }
+      .reveal .dodont .do ul > li::before {
+        border-left-color: var(--sf-accent-teal);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- ==================== TITLE ==================== -->
+        <section class="title-slide">
+          <h1>Scoutbook Plus</h1>
+          <p class="subtitle">
+            A Parent&rsquo;s Guide to Following Your Scout&rsquo;s Adventure
+          </p>
+          <p class="byline">
+            Presented by Tyler Malone<br />Assistant Cubmaster, Pack 3116
+          </p>
+          <aside class="notes">
+            Welcome, families. This is the parent companion to the Den Leader
+            session. Scoutbook Plus is where your Scout's advancement record
+            lives. Your den leader records what happens at meetings; you can
+            follow along in real time, record work you do at home, and look up
+            every adventure your Scout can earn. Everything here comes from the
+            Scoutbook Knowledge Base ("Scoutbook Plus Tutorial for Parents") and
+            the official adventure pages on scouting.org.
+          </aside>
+        </section>
+
+        <!-- ==================== WHAT YOU CAN DO ==================== -->
+        <section>
+          <h2>What You Can Do as a Parent</h2>
+          <div class="agenda">
+            <div class="card">
+              <div class="num">01</div>
+              <h4>Follow Progress</h4>
+              <p>
+                See your Scout&rsquo;s rank, adventures, and requirements in
+                real time.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">02</div>
+              <h4>Mark Completed</h4>
+              <p>
+                Record family and at-home requirements so your den leader can
+                sign them off.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">03</div>
+              <h4>Explore Adventures</h4>
+              <p>
+                Look up every required and elective adventure, with requirements
+                and activity ideas.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">04</div>
+              <h4>Stay on Schedule</h4>
+              <p>
+                See the den and pack calendar, sync it to your phone, and RSVP
+                if your den uses it.
+              </p>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="label">What you can&rsquo;t do</span>Parents can mark
+            items <strong>Completed</strong>, but only a registered unit leader
+            can mark them <strong>Approved</strong> (signed off). That&rsquo;s
+            by design.
+          </div>
+          <aside class="notes">
+            Four things parents do in Scoutbook Plus. And one thing you can't:
+            approve. Per the Knowledge Base, parents, as only parents, do not
+            have rights to mark any advancement as approved. If you're also a
+            registered leader in the unit, you'll see more options, but check
+            your unit's approval policy before using them. Source: "Scoutbook
+            Plus Tutorial for Parents"; "Preventing a Parent from Approving
+            Advancements," Scoutbook Knowledge Base.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: GETTING IN ==================== -->
+        <section class="section-header">
+          <h2>Getting In</h2>
+          <p>Logging in and finding your Scout</p>
+        </section>
+
+        <!-- ==================== LOGIN ==================== -->
+        <section>
+          <h2>Logging In</h2>
+          <div class="columns center">
+            <div class="col">
+              <div class="url">advancements.scouting.org</div>
+              <ol class="steps">
+                <li>
+                  Sign in with your
+                  <strong>my.Scouting</strong> account&nbsp;&mdash; the one you
+                  used to <strong>register your Scout</strong>.
+                </li>
+                <li>
+                  If you have more than one role, use the
+                  <span class="ui">Currently viewing</span> pulldown (top right)
+                  to pick <strong>Parent / Guardian</strong>.
+                </li>
+                <li>
+                  Click your <strong>child&rsquo;s name</strong> to open their
+                  Scoutbook page.
+                </li>
+              </ol>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/login-position-pulldown.png"
+                alt="Currently viewing pulldown listing a Parent / Guardian connection"
+              />
+              <span class="shot-caption"
+                >Parent / Guardian appears as one of your connections</span
+              >
+            </div>
+          </div>
+          <div class="callout warn">
+            <span class="label">Don&rsquo;t see your Scout?</span>Parents should
+            already be connected to their Scouts. If yours is missing, contact
+            your <strong>local council registrar</strong> (your den leader can
+            help you reach them).
+          </div>
+          <aside class="notes">
+            Same website the leaders use: advancements.scouting.org. Log in with
+            the my.Scouting account you used when you registered your Scout.
+            There's no separate signup. If you're also a leader, or have Scouts
+            in more than one unit, the Currently viewing pulldown switches
+            between your roles. Choose your Parent / Guardian connection. If
+            your child isn't there, the council registrar has to connect you.
+            That's not something the den leader can fix in Scoutbook. Source:
+            "Scoutbook Plus Tutorial for Parents" — Logging in for the first
+            time; Viewing/Editing your child's profile.
+          </aside>
+        </section>
+
+        <!-- ==================== SCOUT PAGE ==================== -->
+        <section>
+          <h2>Your Scout&rsquo;s Page</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ul class="tight small">
+                <li>Every <strong>rank</strong> with a progress bar.</li>
+                <li><strong>Current adventures</strong> and their status.</li>
+                <li>
+                  <strong>Edit Profile</strong>: check contact info, add a
+                  nickname or photo.
+                </li>
+              </ul>
+              <div class="callout warn">
+                <span class="label">Please don&rsquo;t</span>change your
+                Scout&rsquo;s <strong>name</strong> or
+                <strong>Member ID</strong>. They must match the official
+                application.
+              </div>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/scout-advancement-progress.png"
+                alt="Youth profile with Cub Scout ranks, progress bars, and current adventures"
+                style="max-height: 480px"
+              />
+              <span class="shot-caption"
+                >The arrow marks View More on the current rank</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            This is your Scout's home page: rank progress at the top, current
+            adventures below. As the parent you have full control of the
+            profile. Please do verify contact info, and feel free to add a
+            nickname and photo. Changes here flow back into your Scout's
+            official Scouting America record, which is why the name and Member
+            ID must not change. They have to match the application. Source:
+            "Scoutbook Plus Tutorial for Parents" — Viewing/Editing your child's
+            profile; "Why Do Parents Have Full Control?"
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: PROGRESS ==================== -->
+        <section class="section-header">
+          <h2>Following Progress</h2>
+          <p>What the statuses mean and where to look</p>
+        </section>
+
+        <!-- ==================== STATUS LIFECYCLE ==================== -->
+        <section>
+          <h2>Who Does What</h2>
+          <div class="flow">
+            <div class="stage you">
+              <h4>Started</h4>
+              <p>Work is in progress.</p>
+              <span class="who">You, your Scout, or a leader</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage you">
+              <h4>Completed</h4>
+              <p>
+                Someone thinks the Scout is done.
+                <strong>Not a sign-off yet.</strong>
+              </p>
+              <span class="who">You, your Scout, or a leader</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage official">
+              <h4>Approved</h4>
+              <p>A leader verified it. <strong>Officially earned.</strong></p>
+              <span class="who">Unit leaders only</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage optional">
+              <h4>Awarded</h4>
+              <p>Optional. The badge or loop was presented to your Scout.</p>
+              <span class="who">Unit leaders</span>
+            </div>
+          </div>
+          <ul class="tight small" style="margin-top: 0.9em">
+            <li>
+              <strong>Completed</strong> is like your Scout raising their hand:
+              &ldquo;I did it!&rdquo; <strong>Approved</strong> is the
+              leader&rsquo;s initials in the handbook.
+            </li>
+            <li>
+              You can enter Completed items on the website or in the
+              <strong>Scouting mobile app</strong>.
+            </li>
+          </ul>
+          <aside class="notes">
+            The gold stages are yours. Started and Completed can be entered by a
+            parent, the Scout, or a leader. Approved is the leader's sign-off.
+            The Knowledge Base compares it to the leader initialing the
+            handbook. As far as Scouting America is concerned, Approved is what
+            counts as earned. Awarded is optional bookkeeping the pack uses to
+            track what's been handed out at pack meetings. Source: "Introduction
+            to Scoutbook Plus for Cub Scout Packs" — What the Different
+            Advancement Statuses Mean; "Why Do Parents Have Full Control?"
+          </aside>
+        </section>
+
+        <!-- ==================== INSIDE A RANK ==================== -->
+        <section>
+          <h2>Inside a Rank</h2>
+          <div class="shot-col">
+            <img
+              class="shot"
+              src="images/rank-view-more.png"
+              alt="Bear rank page showing six required adventures and elective adventures with their status"
+              style="max-height: 360px"
+            />
+            <span class="shot-caption"
+              >Click View More on a rank: required adventures on top, electives
+              below</span
+            >
+          </div>
+          <ul class="tight small" style="margin-top: 0.8em">
+            <li>
+              Each adventure shows whether it&rsquo;s
+              <strong>not started</strong>, <strong>started</strong>, or
+              <strong>completed</strong>.
+            </li>
+            <li>
+              For example, the <strong>Bear</strong> rank takes
+              <strong>six required adventures</strong> plus
+              <strong>any two electives</strong>.
+            </li>
+          </ul>
+          <aside class="notes">
+            From your Scout's page, View More on the current rank shows this.
+            The required adventures are across the top, electives underneath,
+            each with its status. Rank requirements vary a bit by rank. The rank
+            pages on scouting.org (coming up) list exactly what each rank needs.
+            Bear, for example, is six required plus any two electives. Sources:
+            "Introduction to Scoutbook Plus for Cub Scout Packs" — Entering
+            Advancements; scouting.org Bear Adventures page.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: MARKING COMPLETE ==================== -->
+        <section class="section-header">
+          <h2>Marking Completed</h2>
+          <p>Recording what your Scout did at home</p>
+        </section>
+
+        <!-- ==================== TALK FIRST ==================== -->
+        <section>
+          <h2>Before You Mark Anything</h2>
+          <blockquote>
+            Before marking anything as complete, discuss with your unit leaders
+            to make sure you are aligned with your unit&rsquo;s advancement
+            practices.
+          </blockquote>
+          <p class="source" style="margin-top: 0; border: none; padding: 0">
+            Scoutbook Plus Tutorial for Parents
+          </p>
+          <div class="columns">
+            <div class="col">
+              <h3>Your den leader records</h3>
+              <ul class="tight">
+                <li>
+                  Requirements done <strong>at den meetings</strong> and pack
+                  events.
+                </li>
+                <li>The <strong>Approval</strong> for everything.</li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>You record</h3>
+              <ul class="tight">
+                <li><strong>Family</strong> requirements.</li>
+                <li>Anything assigned as <strong>homework</strong>.</li>
+                <li>
+                  Make-ups and electives you agreed on with your den leader.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            This is the Knowledge Base's own advice, in capital letters on the
+            parent tutorial. Every pack handles this a little differently. In
+            some packs the den leader enters everything; in others parents are
+            expected to record home work. Ask your den leader how ours works.
+            The split on this slide comes from the tutorial: your Scout's den
+            leader records requirements completed; you record completion of
+            family requirements or those assigned as homework. The third bullet
+            on the right (make-ups and electives) is my suggestion, as long as
+            it's agreed with the den leader first. Source: "Scoutbook Plus
+            Tutorial for Parents" — Viewing Advancements and Marking
+            Requirements Complete.
+          </aside>
+        </section>
+
+        <!-- ==================== MARK ONE REQUIREMENT ==================== -->
+        <section>
+          <h2>Marking a Requirement Completed</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps small">
+                <li>
+                  On your Scout&rsquo;s page, click
+                  <span class="ui">View More</span> on the rank.
+                </li>
+                <li>Click the <strong>adventure</strong>.</li>
+                <li>
+                  Find the requirement and enter the
+                  <strong>completion date</strong>. Add a comment if helpful.
+                </li>
+                <li>Click <span class="ui">Save</span>.</li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/adventure-requirements.png"
+                alt="Adventure page listing each requirement with a completion date field, comment button, and Save"
+                style="max-height: 440px"
+              />
+              <span class="shot-caption"
+                >Leader view shown: the Approved checkbox is leaders only</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            Path: your Scout, View More on the rank, click the adventure. Each
+            requirement has a completion date and an Add Comment button.
+            Comments are a great way to tell the den leader what you did ("did
+            this one on our family hike Saturday"). This screenshot is from a
+            leader account, so it shows the "Mark as Approved/Recorded"
+            checkbox. As a parent you won't be able to approve. Remember to
+            Save. Source: "Introduction to Scoutbook Plus for Cub Scout Packs" —
+            Entering Advancements.
+          </aside>
+        </section>
+
+        <!-- ==================== QUICK ENTRY ==================== -->
+        <section>
+          <h2>Several at Once: Quick Entry</h2>
+          <div class="columns center">
+            <div class="col">
+              <ol class="steps">
+                <li>
+                  On the adventure page, click
+                  <span class="ui">Quick Entry</span> (top right).
+                </li>
+                <li>
+                  Check each finished requirement in the
+                  <strong>Complete</strong> column.
+                </li>
+                <li>
+                  Enter the <strong>date</strong> and click
+                  <span class="ui">Save</span>.
+                </li>
+              </ol>
+              <div class="callout">
+                <span class="label">Leave Approve alone</span>The
+                <strong>Approve</strong> column is for leaders. Marking
+                Completed sends it to your den leader&rsquo;s
+                <strong>Pending Items</strong> list to sign off.
+              </div>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/individual-quick-entry-form.png"
+                alt="Quick Entry dialog with Complete and Approve checkbox columns for each requirement"
+                style="max-height: 500px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            Quick Entry lets you mark several requirements for one adventure in
+            one go. Per the Knowledge Base, parents who aren't leaders can mark
+            items completed, "which just means someone thinks the Scout is done
+            with the advancement, but it is not a sign off." What happens next:
+            your entries show up on the den leader's Pending Items tab (covered
+            in the Den Leader session), and they approve from there. Source:
+            "Introduction to Scoutbook Plus for Cub Scout Packs" — Individual
+            Quick Entry.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: EXPLORE ==================== -->
+        <section class="section-header">
+          <h2>Exploring Adventures</h2>
+          <p>Every rank, adventure, and requirement on scouting.org</p>
+        </section>
+
+        <!-- ==================== RANK PAGES ==================== -->
+        <section>
+          <h2>Find Your Scout&rsquo;s Rank</h2>
+          <div class="url">scouting.org/programs/cub-scouts/adventures</div>
+          <div class="columns center">
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/sorg-ranks.png"
+                alt="Cub Scout Ranks page with cards for Lion, Tiger, Wolf, Bear, Webelos, and Arrow of Light"
+                style="max-height: 320px"
+              />
+              <span class="shot-caption"
+                >Pick a rank: Lion through Arrow of Light</span
+              >
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/sorg-bear-rank.png"
+                alt="Bear Adventures page listing required adventures, starting with Bobcat"
+                style="max-height: 320px"
+              />
+              <span class="shot-caption"
+                >Each rank lists required, elective, and special elective
+                adventures</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            This is public. No login needed. Anyone can browse it. Pick the rank
+            by grade: Lion (K), Tiger (1st), Wolf (2nd), Bear (3rd), Webelos
+            (4th), Arrow of Light (5th). Each rank page lists the required
+            adventures, the elective adventures, and special electives. Special
+            electives (for Bear: Archery, Slingshot, BB Guns) can only be
+            completed at approved events with qualified instructors, so those
+            aren't backyard projects. Source: scouting.org Cub Scout Adventures
+            and Bear Adventures pages.
+          </aside>
+        </section>
+
+        <!-- ==================== ADVENTURE PAGE ==================== -->
+        <section>
+          <h2>Inside an Adventure Page</h2>
+          <div class="columns center">
+            <div class="col">
+              <ul class="tight small">
+                <li><strong>Snapshot</strong>: what the adventure is about.</li>
+                <li>
+                  <strong>Safety Moment</strong>: what to check before you
+                  start.
+                </li>
+                <li><strong>Requirements</strong>: the full list, numbered.</li>
+                <li>
+                  <strong>Activities</strong>: choose
+                  <strong>one activity for each requirement</strong>;
+                  <span class="ui">See Details</span> gives step-by-step
+                  instructions.
+                </li>
+              </ul>
+              <img
+                class="shot"
+                src="images/sorg-adventure-activities.png"
+                alt="Activity card for Backpack Packing Challenge with See Details button"
+                style="max-height: 230px"
+              />
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/sorg-adventure-reqs.png"
+                alt="Bear Habitat requirements one through nine"
+                style="max-height: 420px"
+              />
+              <span class="shot-caption"
+                >Bear Habitat: all nine requirements at a glance</span
+              >
+            </div>
+          </div>
+          <div class="callout">
+            <span class="label">Tip</span>In Scoutbook, the
+            <strong>resource page</strong> link at the top of an adventure takes
+            you straight to its page.
+          </div>
+          <aside class="notes">
+            Every adventure has a page like this. Bear Habitat is the example.
+            Snapshot, Safety Moment, the requirements, and then for each
+            requirement a set of activities to choose from. The page says to
+            choose one activity for each requirement. See Details opens the full
+            activity plan with supplies and steps. Inside Scoutbook, each
+            adventure has a "Check out this resource page" line near the top.
+            Clicking it takes you to that adventure's resource page. Good uses
+            for parents: preview what's coming up at den meetings, plan a
+            make-up for a missed meeting, or pick an elective your Scout is
+            excited about. Check with your den leader first. Sources:
+            scouting.org Bear Habitat adventure page; "Introduction to Scoutbook
+            Plus for Cub Scout Packs" — Entering Advancements.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: CALENDAR ==================== -->
+        <section class="section-header">
+          <h2>Staying on Schedule</h2>
+          <p>The den calendar, RSVPs, and your phone</p>
+        </section>
+
+        <!-- ==================== CALENDAR ==================== -->
+        <section>
+          <h2>The Den &amp; Pack Calendar</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps small">
+                <li>
+                  Pick your unit in the
+                  <span class="ui">Currently viewing</span> pulldown (top
+                  right).
+                </li>
+                <li>
+                  Click <span class="ui">Calendar</span> in the left menu.
+                </li>
+                <li>Choose which calendars to show: pack and den.</li>
+              </ol>
+              <h3 style="margin-top: 0.6em">Put it on your phone</h3>
+              <p class="small">
+                Click the <strong>link next to the calendar name</strong> at the
+                bottom of the calendar page for its iCal URL. Add it to Google,
+                Apple, or Outlook and new events show up automatically.
+              </p>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/parent-calendar-unit.png"
+                alt="Scoutbook Plus month calendar with unit selector and My Calendars list"
+                style="max-height: 440px"
+              />
+              <span class="shot-caption"
+                >Unit selector up top &middot; My Calendars at the right</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            The calendar is the same one leaders use. Switch to your unit at the
+            top right, then Calendar on the left. Subscribing: at the bottom of
+            the calendar page, next to each calendar name, there's a link that
+            gives you an iCal URL. There's a separate one for the pack and each
+            den. Add it to your phone's calendar app and Scoutbook events will
+            flow in automatically. Google Calendar: Other calendars, Add by URL.
+            It can take up to 24 hours for changes to show in Google. iPhone:
+            add a Subscribed Calendar and paste the link. Mac: Calendar > File >
+            New Calendar Subscription. Source: "Scoutbook Plus Tutorial for
+            Parents" — Viewing Troop Information; Linking the Calendar With a
+            Third Party Calendar.
+          </aside>
+        </section>
+
+        <!-- ==================== RSVP ==================== -->
+        <section>
+          <h2>RSVP for Your Scout</h2>
+          <p>
+            RSVP is <strong>optional</strong>. Your pack or den decides whether
+            to use it, and leaders turn it on <strong>event by event</strong>.
+            If an event has RSVP turned on:
+          </p>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps small">
+                <li>
+                  Make sure you&rsquo;re set as <strong>parent</strong> in the
+                  top-right pulldown.
+                </li>
+                <li>Click the <strong>event</strong> on the calendar.</li>
+                <li>
+                  On the right, expand
+                  <span class="ui">My Youth Connections</span> with the chevron.
+                </li>
+                <li>Select your Scout and set the RSVP.</li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/parent-rsvp-my-youth.png"
+                alt="Event page with My Youth Connections circled in the attendees panel"
+                style="max-height: 330px"
+              />
+              <span class="shot-caption"
+                >My Youth Connections, circled at right</span
+              >
+            </div>
+          </div>
+          <div class="callout">
+            <span class="label">Why it matters</span>If your den uses RSVP and
+            you don&rsquo;t answer, you show up as <strong>Maybe</strong>. Your
+            RSVP tells the den leader how many supplies to bring.
+          </div>
+          <aside class="notes">
+            RSVP in Scoutbook is optional. Each pack or den chooses whether to
+            use it, and leaders turn it on per event with the "Event with RSVP"
+            box. Some dens collect RSVPs by text, a sign-up sheet, or another
+            app instead, and that's fine. Follow whatever your den leader asks.
+            When RSVP is on for an event, you can answer from the event page.
+            Look for My Youth Connections on the right, expand it, and pick your
+            Scout. Non-responders show as Maybe on the leader's RSVP report, so
+            please answer even if it's a No. This screenshot happens to be from
+            a troop event. Pack and den events look the same. Sources:
+            "Scoutbook Plus Tutorial for Parents" — RSVPing to an Event as a
+            Parent; "Using Scoutbook Plus Calendar" — Event RSVP.
+          </aside>
+        </section>
+
+        <!-- ==================== SCOUT ACCOUNT & APP ==================== -->
+        <section>
+          <h2>Your Scout&rsquo;s Own Account &amp; the App</h2>
+          <div class="columns">
+            <div class="col">
+              <h3>A login for your Scout</h3>
+              <ul class="tight">
+                <li>
+                  Scouts with their own <strong>my.Scouting</strong> account can
+                  review their advancement and see the unit calendar.
+                </li>
+                <li>
+                  Get your Scout&rsquo;s <strong>Member ID</strong> from your
+                  den leader, then create the account at
+                  <strong>my.Scouting.org</strong>.
+                </li>
+                <li>
+                  <strong>Never share your login</strong> with your Scout. Every
+                  user needs their own account.
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>The Scouting app</h3>
+              <ul class="tight">
+                <li>
+                  Parents and Scouts can use the
+                  <strong>Scouting</strong> mobile app for advancement and the
+                  unit calendar instead of the website.
+                </li>
+                <li>
+                  You can mark items <strong>Completed</strong> from the app
+                  too.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Optional, but nice as Scouts get older: they can log in and see
+            their own progress. You no longer need to "invite" a Scout. They
+            just need their own my.Scouting account, created with their Member
+            ID. Never hand a Scout your own login. Every my.Scouting user needs
+            a unique account. The Scouting mobile app is the phone-friendly
+            option for parents and Scouts. The Knowledge Base notes that
+            Completed items can be entered from the app as well as the website.
+            Sources: "Scoutbook Plus Tutorial for Parents" — How to make a
+            my.Scouting.org Account; notice at the top of the tutorial;
+            "Introduction to Scoutbook Plus for Cub Scout Packs" — advancement
+            statuses.
+          </aside>
+        </section>
+
+        <!-- ==================== DO / DON'T ==================== -->
+        <section>
+          <h2>Parent Cheat Sheet</h2>
+          <div class="columns dodont">
+            <div class="col do">
+              <h3>Do</h3>
+              <ul class="tight">
+                <li>
+                  Ask your den leader how the pack handles home advancement.
+                </li>
+                <li>
+                  Mark family and homework requirements
+                  <strong>Completed</strong>, with a date.
+                </li>
+                <li>
+                  Add a <strong>comment</strong> saying what your Scout did.
+                </li>
+                <li>
+                  Browse adventures on <strong>scouting.org</strong> to preview
+                  what&rsquo;s coming.
+                </li>
+                <li>
+                  Subscribe to the den calendar, and <strong>RSVP</strong> if
+                  your den uses it.
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>Don&rsquo;t</h3>
+              <ul class="tight">
+                <li>
+                  Change your Scout&rsquo;s <strong>name</strong> or
+                  <strong>Member ID</strong>.
+                </li>
+                <li>
+                  Expect Completed to mean earned. It still needs
+                  <strong>leader approval</strong>.
+                </li>
+                <li>
+                  Plan <strong>special electives</strong> (archery, BB guns,
+                  slingshots) at home. Those need approved events.
+                </li>
+                <li>Share your login with your Scout.</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            A one-slide summary of everything we covered. If you only remember
+            one thing: Completed is "we did it," Approved is the leader's
+            sign-off.
+          </aside>
+        </section>
+
+        <!-- ==================== RESOURCES ==================== -->
+        <section>
+          <h2>Resources</h2>
+          <ul class="tight small">
+            <li>
+              <strong>These slides as a PDF:</strong>
+              <a href="https://slides.rtylermalone.com/scoutbook-parents/Scoutbook-Plus-for-Parents.pdf" download>Scoutbook-Plus-for-Parents.pdf</a>
+            </li>
+            <li>
+              <strong>Scoutbook Plus login:</strong>
+              <a href="https://advancements.scouting.org"
+                >advancements.scouting.org</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/scoutbook-tutorial-for-parents/"
+                >Scoutbook Plus Tutorial for Parents</a
+              >: login, profile, marking complete, calendar, RSVP
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/introduction-to-scoutbook-plus-for-cub-scout-packs/"
+                >Introduction to Scoutbook Plus for Cub Scout Packs</a
+              >: advancement statuses, Quick Entry
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/why-do-parents-have-full-control/"
+                >Why Do Parents Have Full Control?</a
+              >
+            </li>
+            <li>
+              <strong>Cub Scout adventures:</strong>
+              <a href="https://www.scouting.org/programs/cub-scouts/adventures/"
+                >scouting.org/programs/cub-scouts/adventures</a
+              >
+            </li>
+            <li>
+              <strong>Create a my.Scouting account:</strong>
+              <a href="https://my.scouting.org">my.scouting.org</a>
+            </li>
+            <li>
+              <strong>Questions?</strong> Start with your den leader. The
+              <a href="https://discussions.scouting.org/c/scoutbook/28"
+                >Scouting Forums</a
+              >
+              cover technical issues.
+            </li>
+          </ul>
+          <p class="source">
+            Screenshots courtesy of the Scoutbook Knowledge Base and
+            scouting.org, Scouting America. Scoutbook Plus changes often;
+            screens may differ from what you see today.
+          </p>
+          <aside class="notes">
+            The slides are posted at slides.rtylermalone.com. Grab the links
+            from there.
+          </aside>
+        </section>
+
+        <!-- ==================== Q&A ==================== -->
+        <section class="title-slide">
+          <h1>Questions &amp; Discussion</h1>
+          <p class="subtitle" style="margin-top: 1em">Tyler Malone</p>
+          <p class="byline">Assistant Cubmaster, Pack 3116</p>
+        </section>
+      </div>
+      <!-- /slides -->
+    </div>
+    <!-- /reveal -->
+
+    <!-- Download as PDF (rebuild with: npm run pdf) -->
+    <a class="pdf-download" href="Scoutbook-Plus-for-Parents.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      Download PDF
+    </a>
+
+    <!-- Persistent corner logo -->
+    <div class="corner-logo corner-logo-right">
+      <img src="images/CACLogo.webp" alt="Cherokee Area Council" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        showSlideNumber: "speaker",
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        transition: "fade",
+        transitionSpeed: "default",
+        backgroundTransition: "fade",
+        center: true,
+        plugins: [RevealNotes],
+      });
+    </script>
+  </body>
+</html>

@@ -18,220 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css"
     />
     <link rel="stylesheet" href="../shared/theme/campfire.css" id="theme" />
-    <style>
-      /* ---------- Deck-specific components (built on Campfire tokens) ---------- */
-
-      /* Numbered click-path steps */
-      .reveal ol.steps {
-        list-style: none;
-        counter-reset: step;
-        margin-left: 0;
-        padding-left: 0;
-      }
-      .reveal ol.steps > li {
-        counter-increment: step;
-        position: relative;
-        padding-left: 2.2em;
-        margin-bottom: 0.55em;
-      }
-      .reveal ol.steps > li::before {
-        content: counter(step);
-        position: absolute;
-        left: 0;
-        top: 0.05em;
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 50%;
-        background: var(--sf-accent-blue);
-        color: #fff;
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 700;
-        font-size: 0.9em;
-        line-height: 1.5em;
-        text-align: center;
-      }
-
-      /* UI labels — what you click on screen */
-      .reveal .ui {
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 600;
-        font-size: 0.95em;
-        letter-spacing: 0.02em;
-        color: var(--sf-accent-blue);
-        background: rgba(0, 63, 135, 0.08);
-        border: 1px solid rgba(0, 63, 135, 0.2);
-        border-radius: 3px;
-        padding: 0 0.35em;
-        white-space: nowrap;
-      }
-
-      /* Tip / heads-up callouts */
-      .reveal .callout {
-        margin-top: 0.9em;
-        padding: 0.7em 1.1em;
-        border-left: 5px solid var(--sf-accent-gold);
-        background: rgba(253, 208, 35, 0.14);
-        border-radius: 0 4px 4px 0;
-        font-size: 0.85em;
-        color: var(--sf-text-primary);
-      }
-      .reveal .callout.warn {
-        border-left-color: var(--sf-accent-red);
-        background: rgba(206, 17, 38, 0.07);
-      }
-      .reveal .callout .label {
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-right: 0.4em;
-        color: var(--sf-accent-gold);
-      }
-      .reveal .callout.warn .label {
-        color: var(--sf-accent-red);
-      }
-
-      /* Screenshots */
-      .reveal section img.shot {
-        display: block;
-        width: auto;
-        max-width: 100%;
-        max-height: 470px;
-        margin: 0 auto;
-        background: #fff;
-        border-radius: 4px;
-        box-shadow:
-          0 4px 18px var(--sf-shadow),
-          0 0 0 1px var(--sf-border);
-      }
-      .reveal section img.shot.strip {
-        max-height: none;
-        width: 100%;
-      }
-      .reveal .shot-col {
-        text-align: center;
-      }
-      .reveal .shot-caption {
-        display: block;
-        margin-top: 0.5em;
-        font-family: "Barlow Condensed", sans-serif;
-        font-size: 0.62em;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--sf-text-muted);
-        text-align: center;
-      }
-      .reveal .columns.center {
-        align-items: center;
-      }
-
-      /* Status lifecycle flow */
-      .reveal .flow {
-        display: flex;
-        align-items: stretch;
-        gap: 0.5em;
-        margin: 0.6em 0 0.4em;
-      }
-      .reveal .flow .stage {
-        flex: 1;
-        background: rgba(0, 63, 135, 0.04);
-        border: 2px solid var(--sf-border);
-        border-top: 5px solid var(--sf-accent-blue);
-        border-radius: 0 0 4px 4px;
-        padding: 0.7em 0.8em;
-      }
-      .reveal .flow .stage.official {
-        border-top-color: var(--sf-accent-red);
-        background: rgba(206, 17, 38, 0.05);
-      }
-      .reveal .flow .stage.optional {
-        border-style: dashed;
-        border-top-style: solid;
-        border-top-color: var(--sf-text-muted);
-      }
-      .reveal .flow .stage h4 {
-        font-family: "Barlow Condensed", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 1.15em;
-        margin: 0 0 0.3em;
-      }
-      .reveal .flow .stage.official h4 {
-        color: var(--sf-accent-red);
-      }
-      .reveal .flow .stage p {
-        font-size: 0.72em;
-        line-height: 1.45;
-        margin: 0;
-      }
-      .reveal .flow .stage .who {
-        display: block;
-        margin-top: 0.6em;
-        font-family: "Barlow Condensed", sans-serif;
-        font-size: 0.7em;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--sf-text-muted);
-      }
-      .reveal .flow .arrow {
-        align-self: center;
-        font-size: 1.4em;
-        color: var(--sf-accent-red);
-        font-weight: 700;
-      }
-
-      /* Agenda cards */
-      .reveal .agenda {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1em;
-        margin-top: 0.6em;
-      }
-      .reveal .agenda .card {
-        background: rgba(0, 63, 135, 0.04);
-        border: 2px solid var(--sf-border);
-        border-top: 5px solid var(--sf-accent-blue);
-        border-radius: 0 0 4px 4px;
-        padding: 0.9em 1em;
-      }
-      .reveal .agenda .card .num {
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 800;
-        font-size: 2em;
-        color: var(--sf-accent-red);
-        line-height: 1;
-      }
-      .reveal .agenda .card h4 {
-        margin: 0.2em 0 0.3em;
-      }
-      .reveal .agenda .card p {
-        font-size: 0.75em;
-        line-height: 1.45;
-        margin: 0;
-      }
-
-      /* URL banner */
-      .reveal .url {
-        display: inline-block;
-        font-family: "Barlow Condensed", sans-serif;
-        font-weight: 700;
-        font-size: 1.6em;
-        letter-spacing: 0.02em;
-        color: var(--sf-accent-blue);
-        background: #fff;
-        border: 2px solid var(--sf-accent-blue);
-        border-radius: 4px;
-        padding: 0.15em 0.6em;
-        margin: 0.2em 0 0.6em;
-      }
-
-      .reveal .tight li {
-        margin-bottom: 0.35em;
-      }
-      .reveal .small {
-        font-size: 0.85em;
-      }
-    </style>
+    <link rel="stylesheet" href="../shared/theme/campfire-howto.css" />
   </head>
   <body>
     <div class="reveal">
@@ -914,15 +701,23 @@
               />
             </div>
           </div>
+          <div class="callout">
+            <span class="label">Your call</span>Scoutbook RSVP is optional.
+            Decide with your pack whether to use it, then tell families where to
+            reply.
+          </div>
           <aside class="notes">
-            RSVP is opt-in per event. Check the "Event with RSVP" box. The most
-            common reason RSVP "doesn't work" is that no attendees were added.
-            Non-responders show up as Maybe, so the Maybe list is exactly who to
-            chase before you buy supplies. Quick Entry RSVP lets you record the
-            replies you get in a group text or at pickup. The RSVP Report button
-            is on any RSVP-enabled event. Sources: "Using Scoutbook Plus
-            Calendar" — Event RSVP; Scoutbook Knowledge Base article on Scouts
-            RSVPing to events.
+            Using Scoutbook RSVP is optional. It's up to each pack or den. Some
+            dens prefer a group text or sign-up sheet. Whatever you choose, be
+            consistent and tell families up front so they know where to answer.
+            If you do use it, RSVP is opt-in per event. Check the "Event with
+            RSVP" box. The most common reason RSVP "doesn't work" is that no
+            attendees were added. Non-responders show up as Maybe, so the Maybe
+            list is exactly who to chase before you buy supplies. Quick Entry
+            RSVP lets you record the replies you get in a group text or at
+            pickup. The RSVP Report button is on any RSVP-enabled event.
+            Sources: "Using Scoutbook Plus Calendar" — Event RSVP; Scoutbook
+            Knowledge Base article on Scouts RSVPing to events.
           </aside>
         </section>
 
@@ -1051,7 +846,7 @@
                 <td><strong>Each month</strong></td>
                 <td>
                   Put the month&rsquo;s meetings on the
-                  <strong>Den calendar</strong> with RSVP and reminders; send
+                  <strong>Den calendar</strong> with reminders (and RSVP, if you use it); send
                   one organized <strong>message</strong> covering Den and Pack
                   activities.
                 </td>
@@ -1059,7 +854,7 @@
               <tr>
                 <td><strong>Before a meeting</strong></td>
                 <td>
-                  Check the <strong>RSVP Report</strong>; nudge the
+                  Check RSVPs and nudge the
                   &ldquo;Maybes&rdquo;; clear the
                   <strong>Pending Items</strong> tab.
                 </td>
@@ -1095,6 +890,10 @@
         <section>
           <h2>Resources</h2>
           <ul class="tight small">
+            <li>
+              <strong>These slides as a PDF:</strong>
+              <a href="https://slides.rtylermalone.com/scoutbook-den-leader/Scoutbook-Plus-for-Den-Leaders.pdf" download>Scoutbook-Plus-for-Den-Leaders.pdf</a>
+            </li>
             <li>
               <strong>Scoutbook Plus login:</strong>
               <a href="https://advancements.scouting.org"
@@ -1162,6 +961,12 @@
       <!-- /slides -->
     </div>
     <!-- /reveal -->
+
+    <!-- Download as PDF (rebuild with: npm run pdf) -->
+    <a class="pdf-download" href="Scoutbook-Plus-for-Den-Leaders.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      Download PDF
+    </a>
 
     <!-- Persistent corner logo -->
     <div class="corner-logo corner-logo-right">

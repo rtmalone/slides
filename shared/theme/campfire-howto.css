@@ -1,0 +1,261 @@
+/*
+ * Campfire How-To — component add-ons for step-by-step software guides
+ * Used by the Scoutbook Plus decks. Load after campfire.css.
+ *
+ * Components: .steps (numbered click path), .ui (on-screen label),
+ * .callout / .callout.warn, img.shot / .shot-col / .shot-caption,
+ * .flow (status lifecycle), .agenda (section cards), .url banner.
+ */
+
+
+/* Numbered click-path steps */
+.reveal ol.steps {
+  list-style: none;
+  counter-reset: step;
+  margin-left: 0;
+  padding-left: 0;
+}
+.reveal ol.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.2em;
+  margin-bottom: 0.55em;
+}
+.reveal ol.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: var(--sf-accent-blue);
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+/* UI labels — what you click on screen */
+.reveal .ui {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  color: var(--sf-accent-blue);
+  background: rgba(0, 63, 135, 0.08);
+  border: 1px solid rgba(0, 63, 135, 0.2);
+  border-radius: 3px;
+  padding: 0 0.35em;
+  white-space: nowrap;
+}
+
+/* Tip / heads-up callouts */
+.reveal .callout {
+  margin-top: 0.9em;
+  padding: 0.7em 1.1em;
+  border-left: 5px solid var(--sf-accent-gold);
+  background: rgba(253, 208, 35, 0.14);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85em;
+  color: var(--sf-text-primary);
+}
+.reveal .callout.warn {
+  border-left-color: var(--sf-accent-red);
+  background: rgba(206, 17, 38, 0.07);
+}
+.reveal .callout .label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.4em;
+  color: var(--sf-accent-gold);
+}
+.reveal .callout.warn .label {
+  color: var(--sf-accent-red);
+}
+
+/* Screenshots */
+.reveal section img.shot {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 470px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 18px var(--sf-shadow),
+    0 0 0 1px var(--sf-border);
+}
+.reveal section img.shot.strip {
+  max-height: none;
+  width: 100%;
+}
+.reveal .shot-col {
+  text-align: center;
+}
+.reveal .shot-caption {
+  display: block;
+  margin-top: 0.5em;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.62em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sf-text-muted);
+  text-align: center;
+}
+.reveal .columns.center {
+  align-items: center;
+}
+
+/* Status lifecycle flow */
+.reveal .flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5em;
+  margin: 0.6em 0 0.4em;
+}
+.reveal .flow .stage {
+  flex: 1;
+  background: rgba(0, 63, 135, 0.04);
+  border: 2px solid var(--sf-border);
+  border-top: 5px solid var(--sf-accent-blue);
+  border-radius: 0 0 4px 4px;
+  padding: 0.7em 0.8em;
+}
+.reveal .flow .stage.official {
+  border-top-color: var(--sf-accent-red);
+  background: rgba(206, 17, 38, 0.05);
+}
+.reveal .flow .stage.optional {
+  border-style: dashed;
+  border-top-style: solid;
+  border-top-color: var(--sf-text-muted);
+}
+.reveal .flow .stage h4 {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1.15em;
+  margin: 0 0 0.3em;
+}
+.reveal .flow .stage.official h4 {
+  color: var(--sf-accent-red);
+}
+.reveal .flow .stage p {
+  font-size: 0.72em;
+  line-height: 1.45;
+  margin: 0;
+}
+.reveal .flow .stage .who {
+  display: block;
+  margin-top: 0.6em;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sf-text-muted);
+}
+.reveal .flow .arrow {
+  align-self: center;
+  font-size: 1.4em;
+  color: var(--sf-accent-red);
+  font-weight: 700;
+}
+
+/* Agenda cards */
+.reveal .agenda {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin-top: 0.6em;
+}
+.reveal .agenda .card {
+  background: rgba(0, 63, 135, 0.04);
+  border: 2px solid var(--sf-border);
+  border-top: 5px solid var(--sf-accent-blue);
+  border-radius: 0 0 4px 4px;
+  padding: 0.9em 1em;
+}
+.reveal .agenda .card .num {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 2em;
+  color: var(--sf-accent-red);
+  line-height: 1;
+}
+.reveal .agenda .card h4 {
+  margin: 0.2em 0 0.3em;
+}
+.reveal .agenda .card p {
+  font-size: 0.75em;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* URL banner */
+.reveal .url {
+  display: table; /* own line, shrink-wrapped */
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 1.6em;
+  letter-spacing: 0.02em;
+  color: var(--sf-accent-blue);
+  background: #fff;
+  border: 2px solid var(--sf-accent-blue);
+  border-radius: 4px;
+  padding: 0.15em 0.6em;
+  margin: 0.2em 0 0.6em;
+}
+
+.reveal .tight li {
+  margin-bottom: 0.35em;
+}
+.reveal .small {
+  font-size: 0.85em;
+}
+
+/* Download-as-PDF button: corner pill on screen; hidden while presenting fullscreen and in print */
+.pdf-download {
+  position: fixed;
+  left: 16px;
+  bottom: 14px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.35em 0.8em;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--sf-accent-blue);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px var(--sf-shadow);
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+.pdf-download:hover,
+.pdf-download:focus-visible {
+  opacity: 1;
+}
+.pdf-download svg {
+  width: 1em;
+  height: 1em;
+}
+:fullscreen .pdf-download,
+html.print-pdf .pdf-download {
+  display: none;
+}
+@media print {
+  .pdf-download {
+    display: none;
+  }
+}
