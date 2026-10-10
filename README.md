@@ -4,9 +4,10 @@ Presentation decks hosted at [slides.rtylermalone.com](https://slides.rtylermalo
 
 ## Presentations
 
-| Talk | Venue | Date | Link |
-|------|-------|------|------|
-| Astronomy & Scouting | Barnard Astronomical Society | March 2026 | [View](https://slides.rtylermalone.com/astronomy-scouting/) |
+| Talk                           | Venue                        | Date       | Link                                                          |
+| ------------------------------ | ---------------------------- | ---------- | ------------------------------------------------------------- |
+| Astronomy & Scouting           | Barnard Astronomical Society | March 2026 | [View](https://slides.rtylermalone.com/astronomy-scouting/)   |
+| Scoutbook Plus for Den Leaders | Den Leader Training          | Fall 2026  | [View](https://slides.rtylermalone.com/scoutbook-den-leader/) |
 
 ## Local Preview
 
@@ -17,14 +18,14 @@ python3 -m http.server 8000
 
 ## Keyboard Shortcuts (during presentation)
 
-| Key | Action |
-|-----|--------|
-| `S` | Open speaker notes |
-| `F` | Fullscreen |
-| `O` | Slide overview |
-| `B` | Black screen (pause) |
-| `←` `→` | Navigate slides |
-| `Esc` | Exit fullscreen/overview |
+| Key     | Action                   |
+| ------- | ------------------------ |
+| `S`     | Open speaker notes       |
+| `F`     | Fullscreen               |
+| `O`     | Slide overview           |
+| `B`     | Black screen (pause)     |
+| `←` `→` | Navigate slides          |
+| `Esc`   | Exit fullscreen/overview |
 
 ## Adding a New Presentation
 

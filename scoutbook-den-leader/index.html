@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scoutbook Plus for Den Leaders | Tyler Malone</title>
+    <meta
+      name="description"
+      content="A hands-on guide to Scoutbook Plus for Cub Scout Den Leaders: your den roster, recording advancement, calendar events with RSVP, and messaging families. Presented by Tyler Malone, Assistant Cubmaster, Pack 3116."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css"
+    />
+    <link rel="stylesheet" href="../shared/theme/campfire.css" id="theme" />
+    <style>
+      /* ---------- Deck-specific components (built on Campfire tokens) ---------- */
+
+      /* Numbered click-path steps */
+      .reveal ol.steps {
+        list-style: none;
+        counter-reset: step;
+        margin-left: 0;
+        padding-left: 0;
+      }
+      .reveal ol.steps > li {
+        counter-increment: step;
+        position: relative;
+        padding-left: 2.2em;
+        margin-bottom: 0.55em;
+      }
+      .reveal ol.steps > li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 0.05em;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        background: var(--sf-accent-blue);
+        color: #fff;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 0.9em;
+        line-height: 1.5em;
+        text-align: center;
+      }
+
+      /* UI labels — what you click on screen */
+      .reveal .ui {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 600;
+        font-size: 0.95em;
+        letter-spacing: 0.02em;
+        color: var(--sf-accent-blue);
+        background: rgba(0, 63, 135, 0.08);
+        border: 1px solid rgba(0, 63, 135, 0.2);
+        border-radius: 3px;
+        padding: 0 0.35em;
+        white-space: nowrap;
+      }
+
+      /* Tip / heads-up callouts */
+      .reveal .callout {
+        margin-top: 0.9em;
+        padding: 0.7em 1.1em;
+        border-left: 5px solid var(--sf-accent-gold);
+        background: rgba(253, 208, 35, 0.14);
+        border-radius: 0 4px 4px 0;
+        font-size: 0.85em;
+        color: var(--sf-text-primary);
+      }
+      .reveal .callout.warn {
+        border-left-color: var(--sf-accent-red);
+        background: rgba(206, 17, 38, 0.07);
+      }
+      .reveal .callout .label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-right: 0.4em;
+        color: var(--sf-accent-gold);
+      }
+      .reveal .callout.warn .label {
+        color: var(--sf-accent-red);
+      }
+
+      /* Screenshots */
+      .reveal section img.shot {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        max-height: 470px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow:
+          0 4px 18px var(--sf-shadow),
+          0 0 0 1px var(--sf-border);
+      }
+      .reveal section img.shot.strip {
+        max-height: none;
+        width: 100%;
+      }
+      .reveal .shot-col {
+        text-align: center;
+      }
+      .reveal .shot-caption {
+        display: block;
+        margin-top: 0.5em;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.62em;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--sf-text-muted);
+        text-align: center;
+      }
+      .reveal .columns.center {
+        align-items: center;
+      }
+
+      /* Status lifecycle flow */
+      .reveal .flow {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5em;
+        margin: 0.6em 0 0.4em;
+      }
+      .reveal .flow .stage {
+        flex: 1;
+        background: rgba(0, 63, 135, 0.04);
+        border: 2px solid var(--sf-border);
+        border-top: 5px solid var(--sf-accent-blue);
+        border-radius: 0 0 4px 4px;
+        padding: 0.7em 0.8em;
+      }
+      .reveal .flow .stage.official {
+        border-top-color: var(--sf-accent-red);
+        background: rgba(206, 17, 38, 0.05);
+      }
+      .reveal .flow .stage.optional {
+        border-style: dashed;
+        border-top-style: solid;
+        border-top-color: var(--sf-text-muted);
+      }
+      .reveal .flow .stage h4 {
+        font-family: "Barlow Condensed", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 1.15em;
+        margin: 0 0 0.3em;
+      }
+      .reveal .flow .stage.official h4 {
+        color: var(--sf-accent-red);
+      }
+      .reveal .flow .stage p {
+        font-size: 0.72em;
+        line-height: 1.45;
+        margin: 0;
+      }
+      .reveal .flow .stage .who {
+        display: block;
+        margin-top: 0.6em;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.7em;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--sf-text-muted);
+      }
+      .reveal .flow .arrow {
+        align-self: center;
+        font-size: 1.4em;
+        color: var(--sf-accent-red);
+        font-weight: 700;
+      }
+
+      /* Agenda cards */
+      .reveal .agenda {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1em;
+        margin-top: 0.6em;
+      }
+      .reveal .agenda .card {
+        background: rgba(0, 63, 135, 0.04);
+        border: 2px solid var(--sf-border);
+        border-top: 5px solid var(--sf-accent-blue);
+        border-radius: 0 0 4px 4px;
+        padding: 0.9em 1em;
+      }
+      .reveal .agenda .card .num {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 2em;
+        color: var(--sf-accent-red);
+        line-height: 1;
+      }
+      .reveal .agenda .card h4 {
+        margin: 0.2em 0 0.3em;
+      }
+      .reveal .agenda .card p {
+        font-size: 0.75em;
+        line-height: 1.45;
+        margin: 0;
+      }
+
+      /* URL banner */
+      .reveal .url {
+        display: inline-block;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 1.6em;
+        letter-spacing: 0.02em;
+        color: var(--sf-accent-blue);
+        background: #fff;
+        border: 2px solid var(--sf-accent-blue);
+        border-radius: 4px;
+        padding: 0.15em 0.6em;
+        margin: 0.2em 0 0.6em;
+      }
+
+      .reveal .tight li {
+        margin-bottom: 0.35em;
+      }
+      .reveal .small {
+        font-size: 0.85em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- ==================== TITLE ==================== -->
+        <section class="title-slide">
+          <h1>Scoutbook Plus</h1>
+          <p class="subtitle">
+            A Den Leader&rsquo;s Field Guide to Advancement, Events &amp;
+            Communication
+          </p>
+          <p class="byline">
+            Presented by Tyler Malone<br />Assistant Cubmaster, Pack 3116
+          </p>
+          <aside class="notes">
+            Welcome. This is a hands-on walkthrough of the four things a Den
+            Leader actually does in Scoutbook Plus week to week. Show of hands:
+            who has logged in to Scoutbook Plus? Who has recorded an adventure?
+            Who has sent a den email from it? Everything in this deck comes from
+            the official Scoutbook Knowledge Base and the Scouting forums.
+            Screenshots are from the Knowledge Base. Links are on the resources
+            slide at the end.
+          </aside>
+        </section>
+
+        <!-- ==================== AGENDA ==================== -->
+        <section>
+          <h2>What We&rsquo;ll Cover</h2>
+          <div class="agenda">
+            <div class="card">
+              <div class="num">01</div>
+              <h4>Your Den</h4>
+              <p>
+                Logging in, finding your den on the roster, and filtering it
+                down.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">02</div>
+              <h4>Advancement</h4>
+              <p>
+                Status definitions, recording adventures for one Scout or the
+                whole den, and approvals.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">03</div>
+              <h4>Calendar</h4>
+              <p>Creating den events with reminders, RSVP, and attendance.</p>
+            </div>
+            <div class="card">
+              <div class="num">04</div>
+              <h4>Messaging</h4>
+              <p>Emailing (and texting) just your den&rsquo;s families.</p>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="label">Bring a laptop</span>Roster and den editing is
+            desktop/laptop only right now&nbsp;&mdash; plan to do your Scoutbook
+            work at a computer, not on your phone.
+          </div>
+          <aside class="notes">
+            Four sections. The middle one, advancement, is where most den
+            leaders spend their time and where most of the questions come from.
+            Note the laptop callout up front: den/roster editing functionality
+            is not available on mobile as of this writing.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: YOUR DEN ==================== -->
+        <section class="section-header">
+          <h2>Your Den</h2>
+          <p>Logging in and finding your Scouts</p>
+        </section>
+
+        <!-- ==================== LOGIN ==================== -->
+        <section>
+          <h2>Logging In</h2>
+          <div class="columns center">
+            <div class="col">
+              <div class="url">advancements.scouting.org</div>
+              <ol class="steps">
+                <li>
+                  Sign in with your <strong>my.Scouting</strong> username and
+                  password&nbsp;&mdash; the same account you use for YPT and
+                  registration.
+                </li>
+                <li>
+                  Open the <span class="ui">Currently viewing</span> pulldown in
+                  the <strong>top right</strong>.
+                </li>
+                <li>Select your <strong>Pack leadership position</strong>.</li>
+              </ol>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/login-position-pulldown.png"
+                alt="The Currently viewing pulldown listing the user's positions"
+              />
+              <span class="shot-caption"
+                >Pick the position you&rsquo;re working as</span
+              >
+            </div>
+          </div>
+          <div class="callout">
+            <span class="label">Tip</span>If you hold more than one role or
+            belong to more than one unit, that pulldown controls what you see.
+            Wrong menu options? Check it first.
+          </div>
+          <aside class="notes">
+            Scoutbook Plus lives at advancements.scouting.org. It uses your
+            my.Scouting credentials, so there's no separate account to create.
+            After login, use the pulldown menu at the top right to select your
+            Pack leadership position. Source: "Introduction to Scoutbook Plus
+            for Cub Scout Packs," Scoutbook Knowledge Base.
+          </aside>
+        </section>
+
+        <!-- ==================== PACK ROSTER ==================== -->
+        <section>
+          <h2>Your Home Base: The Roster</h2>
+          <div class="shot-col">
+            <img
+              class="shot"
+              src="images/pack-roster.png"
+              alt="Scoutbook Plus pack roster with left navigation and roster toolbar"
+              style="max-height: 440px"
+            />
+            <span class="shot-caption"
+              >Left nav: Roster, Calendar, Reports &middot; Toolbar: Unit Quick
+              Entry, Run Report, Show: Filtered</span
+            >
+          </div>
+          <aside class="notes">
+            After you pick your position, you land on the Pack Roster. This is
+            where most den leader work starts. Point out on the screenshot: -
+            Left navigation: Roster, Calendar, Profile, Reports, Activity Logs,
+            Forum. - Tabs above the roster: Roster, Pending Items, History. -
+            Toolbar: Add Individual, Add Den, Unit Quick Entry, Run Report,
+            Show: Filtered. - The Den column. We'll use every one of those in
+            the next few slides.
+          </aside>
+        </section>
+
+        <!-- ==================== ROSTER / DENS ==================== -->
+        <section>
+          <h2>Finding Your Den on the Roster</h2>
+          <div class="columns">
+            <div class="col">
+              <h3>Show your dens</h3>
+              <ol class="steps">
+                <li>Go to the <span class="ui">Roster</span> page.</li>
+                <li>
+                  Click the <span class="ui">Den</span> column heading to toggle
+                  and display existing dens.
+                </li>
+              </ol>
+              <img
+                class="shot strip"
+                src="images/roster-den-toggle.png"
+                alt="Roster header row with the Den column heading circled"
+              />
+            </div>
+            <div class="col">
+              <h3>Filter to just your den</h3>
+              <ol class="steps">
+                <li>
+                  Click <span class="ui">Show: Filtered</span> on the right of
+                  the toolbar.
+                </li>
+                <li>
+                  Check your den, then <span class="ui">Show Results</span>.
+                </li>
+              </ol>
+              <img
+                class="shot"
+                src="images/roster-show-filtered.png"
+                alt="Show Roster filter panel with den checkboxes and Show Results button"
+                style="max-height: 250px"
+              />
+            </div>
+          </div>
+          <div class="callout warn">
+            <span class="label">Heads up</span>Scouts must be
+            <strong>moved into a den</strong> before advancement can be
+            recorded. Missing a Scout? Ask your Cubmaster or Pack admin to move
+            them.
+          </div>
+          <aside class="notes">
+            Two jobs here: see your dens, then narrow the roster to just your
+            den so you're not scrolling past the whole pack. The filter panel
+            also lets you filter by type (Youths, Adults) and status. Clicking
+            Show Results applies and saves the filter. Big gotcha: advancement
+            can't be recorded until the Scout is placed in a den. This is the
+            number one "why can't I enter anything?" problem at the start of the
+            year when Scouts cross over. Source: "Introduction to Scoutbook Plus
+            for Cub Scout Packs" — Creating Dens and Assigning Scouts; Viewing
+            Adults in your Pack; Editing and Advancing Already Existing Dens.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: ADVANCEMENT ==================== -->
+        <section class="section-header">
+          <h2>Advancement</h2>
+          <p>Recording adventures and getting them approved</p>
+        </section>
+
+        <!-- ==================== STATUS LIFECYCLE ==================== -->
+        <section>
+          <h2>The Four Advancement Statuses</h2>
+          <div class="flow">
+            <div class="stage">
+              <h4>Started</h4>
+              <p>Work is in progress.</p>
+              <span class="who">Scout, parent, or leader</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage">
+              <h4>Completed</h4>
+              <p>
+                Marked done by the Scout or a parent/leader on their behalf.
+                <strong>Still needs leader sign-off.</strong>
+              </p>
+              <span class="who">Scout, parent, or leader</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage official">
+              <h4>Approved</h4>
+              <p>
+                A leader verified it.
+                <strong
+                  >This is the official &ldquo;earned&rdquo; status.</strong
+                >
+              </p>
+              <span class="who">Registered leaders only</span>
+            </div>
+            <div class="arrow">&rsaquo;</div>
+            <div class="stage optional">
+              <h4>Awarded</h4>
+              <p>
+                Optional. The approved item was physically presented to the
+                Scout.
+              </p>
+              <span class="who">Leaders &middot; optional</span>
+            </div>
+          </div>
+          <ul class="tight small" style="margin-top: 0.9em">
+            <li>
+              Parents who aren&rsquo;t registered leaders&mdash;and Scouts
+              themselves&mdash;can mark <strong>Completed</strong> but
+              <strong>cannot</strong> mark <strong>Approved</strong>.
+            </li>
+            <li>
+              Families can enter Completed items from Scoutbook or the
+              <strong>Scouting mobile app</strong>.
+            </li>
+            <li>
+              Marking an item <strong>Awarded</strong> removes it from open
+              Purchase Orders&nbsp;&mdash; coordinate with whoever buys your
+              pack&rsquo;s loops and pins.
+            </li>
+          </ul>
+          <aside class="notes">
+            This is the single most important slide in the deck. Everyone needs
+            a shared vocabulary. Started = in progress. Completed = the Scout or
+            a parent says "we did it." Can be entered on Scoutbook.com or in the
+            Scouting app. It still needs a leader to sign off. Approved = a
+            leader verified it. This is what counts. Awarded = optional
+            bookkeeping that the item was physically handed to the Scout.
+            Parents who aren't registered leaders, and Scouts, can mark
+            Completed but cannot Approve. Awarded caution: marking Awarded
+            removes the item from open Purchase Orders. If your Advancement
+            Chair uses purchase orders to buy awards, don't mark things Awarded
+            before they've placed the order. Talk to them about your pack's
+            process. Source: "Started, Completed, Approved, Awarded in Scoutbook
+            Plus," Scoutbook Knowledge Base.
+          </aside>
+        </section>
+
+        <!-- ==================== CHECKING PROGRESS ==================== -->
+        <section>
+          <h2>Checking a Scout&rsquo;s Progress</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps">
+                <li>
+                  On the <span class="ui">Roster</span>, click the Scout&rsquo;s
+                  name.
+                </li>
+                <li>Their profile shows every rank with a progress bar.</li>
+                <li>
+                  Click <span class="ui">View More</span> on the current rank to
+                  drill in.
+                </li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/scout-advancement-progress.png"
+                alt="Youth profile showing Cub Scout ranks with progress bars and View More buttons"
+                style="max-height: 480px"
+              />
+              <span class="shot-caption"
+                >The arrow marks View More on the current rank</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            Clicking a Scout on the roster opens their youth profile with
+            advancement progress for every rank. The current rank's View More
+            button takes you to the rank page. Source: "Introduction to
+            Scoutbook Plus for Cub Scout Packs" — Entering Advancements.
+          </aside>
+        </section>
+
+        <!-- ==================== RANK DRILL-DOWN ==================== -->
+        <section>
+          <h2>Inside a Rank</h2>
+          <div class="shot-col">
+            <img
+              class="shot"
+              src="images/rank-view-more.png"
+              alt="Bear rank page showing six required adventures and elective adventures with their status"
+              style="max-height: 400px"
+            />
+            <span class="shot-caption"
+              >The six required adventures on top, electives below, each with
+              its status</span
+            >
+          </div>
+          <div class="callout">
+            <span class="label">Whole den at once?</span>There&rsquo;s currently
+            <strong>no single &ldquo;den at a glance&rdquo;</strong> progress
+            view. Go Scout by Scout, or run
+            <span class="ui">Reports</span> &rsaquo;
+            <span class="ui">Advancements</span> &rsaquo;
+            <span class="ui">History</span> &rsaquo;
+            <span class="ui">Quick Report</span>.
+          </div>
+          <aside class="notes">
+            View More shows the required adventures plus the electives, and
+            whether each is started or completed. A very common forum question
+            is "how do I see my whole den's progress on one screen?" The honest
+            answer right now is that there isn't one. Leaders go Scout by Scout
+            or use Reports > Advancements > History > Quick Report. Practical
+            habit: keep your own simple den tracker (paper or spreadsheet) of
+            what you covered each meeting, then use Unit Quick Entry to record
+            it all at once. Sources: "Introduction to Scoutbook Plus for Cub
+            Scout Packs" — Entering Advancements; Scouting Forums threads on
+            viewing advancement for all Scouts in a den.
+          </aside>
+        </section>
+
+        <!-- ==================== INDIVIDUAL QUICK ENTRY ==================== -->
+        <section>
+          <h2>One Scout: Individual Quick Entry</h2>
+          <div class="columns center">
+            <div class="col">
+              <p>
+                Best for a Scout who did an adventure at home or made up a
+                missed meeting.
+              </p>
+              <ol class="steps">
+                <li>Open the Scout&rsquo;s <strong>adventure page</strong>.</li>
+                <li>Click <span class="ui">Quick Entry</span> (top right).</li>
+                <li>
+                  Check requirements under <strong>Complete</strong> or
+                  <strong>Approve</strong>&nbsp;&mdash; Approve auto-checks
+                  Complete.
+                </li>
+                <li>
+                  Enter the <strong>date</strong> and click
+                  <span class="ui">Save</span>.
+                </li>
+              </ol>
+              <div class="callout">
+                <span class="label">Tip</span>Leaders can also back-fill
+                <strong>previous ranks</strong>&nbsp;&mdash; handy for transfers
+                or work that was never recorded.
+              </div>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/individual-quick-entry-form.png"
+                alt="Quick Entry dialog with Complete and Approve checkbox columns for each requirement"
+                style="max-height: 500px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            Individual Quick Entry lets you mark several requirements in one go
+            for one Scout instead of clicking each requirement separately.
+            Choosing Approved automatically selects Completed too, so you don't
+            need two passes. Back-filling previous ranks is for record-keeping,
+            which helps with transfers and catching up on missed recording.
+            Source: "Introduction to Scoutbook Plus for Cub Scout Packs" —
+            Individual Quick Entry.
+          </aside>
+        </section>
+
+        <!-- ==================== UNIT QUICK ENTRY 1 ==================== -->
+        <section>
+          <h2>The Whole Den: Unit Quick Entry</h2>
+          <p>
+            Your after-meeting workhorse: record one adventure for every Scout
+            who was there.
+          </p>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps">
+                <li>
+                  From the <span class="ui">Roster</span> toolbar, open
+                  <span class="ui">Unit Quick Entry</span>.
+                </li>
+                <li>Choose <span class="ui">Enter Adventures</span>.</li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/unit-quick-entry-menu.png"
+                alt="Roster toolbar with the Unit Quick Entry menu open showing Enter Adventures"
+              />
+            </div>
+          </div>
+          <div class="callout warn">
+            <span class="label">Heads up</span>Unit Quick Entry only works for
+            Scouts who are in the <strong>correct den</strong>. Missing someone?
+            Check their den assignment.
+          </div>
+          <aside class="notes">
+            This is the one to master. Unit Quick Entry is on the roster
+            toolbar. Enter Adventures is the first option in the menu. Again,
+            Scouts have to be in the correct den for them to appear. Source:
+            "Introduction to Scoutbook Plus for Cub Scout Packs" — Unit Quick
+            Entry.
+          </aside>
+        </section>
+
+        <!-- ==================== UNIT QUICK ENTRY 2 ==================== -->
+        <section>
+          <h2>Unit Quick Entry: Record &amp; Approve</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps small">
+                <li>
+                  Select the <strong>Rank</strong>, <strong>Adventure</strong>,
+                  and <strong>Version</strong>, then
+                  <span class="ui">Apply</span>.
+                </li>
+                <li>
+                  On the left, select the <strong>Scouts</strong> who did the
+                  work.
+                </li>
+                <li>On the right, select the <strong>requirements</strong>.</li>
+                <li>
+                  Enter the <strong>date</strong>, check
+                  <strong>Mark as Approved</strong> (leaders only).
+                </li>
+                <li>Click <span class="ui">Apply</span>.</li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/unit-quick-entry-select.png"
+                alt="Bulk Entry Adventures screen with rank, adventure, and version selectors, Scout list, and requirement checklist"
+                style="max-height: 500px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            After each den meeting, take five minutes: pick
+            rank/adventure/version, Apply, check the Scouts who attended, check
+            the requirements you covered, put in the meeting date, mark
+            Approved, Apply. Version matters: adventures get revised, so pick
+            the version your den is actually using. Only leaders can mark
+            Approved. Source: "Introduction to Scoutbook Plus for Cub Scout
+            Packs" — Unit Quick Entry.
+          </aside>
+        </section>
+
+        <!-- ==================== PENDING ITEMS ==================== -->
+        <section>
+          <h2>Approving What Families Submit</h2>
+          <p>
+            When parents mark work <strong>Completed</strong> at home, it waits
+            for you.
+          </p>
+          <ol class="steps">
+            <li>
+              Click the <span class="ui">Pending Items</span> tab above the
+              Roster toolbar.
+            </li>
+            <li>
+              Review everything marked
+              <strong>Completed but not yet Approved</strong>.
+            </li>
+            <li>Click into the Scout to verify and approve.</li>
+          </ol>
+          <img
+            class="shot strip"
+            src="images/pending-items-tab.png"
+            alt="Pending Items tab with Ranks, Adventures, and Awards sub-tabs and their counts"
+          />
+          <div class="callout">
+            <span class="label">Make it a habit</span>Check Pending Items on a
+            regular schedule (say, the night before each den meeting) so
+            families see their Scout&rsquo;s work acknowledged quickly.
+          </div>
+          <aside class="notes">
+            This is your approval inbox. Anything a parent or Scout marked
+            Completed shows up on the Pending Items tab until a leader approves
+            it. The red badges show counts for Ranks, Adventures, and so on.
+            Tell families at the start of the year: "If you do an adventure at
+            home, mark it Completed in the Scouting app and I'll approve it."
+            Source: "Introduction to Scoutbook Plus for Cub Scout Packs" — How
+            to See if an Advancement is Marked Completed But Not Approved.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: CALENDAR ==================== -->
+        <section class="section-header">
+          <h2>Calendar &amp; Events</h2>
+          <p>Reminders, RSVPs, and attendance on autopilot</p>
+        </section>
+
+        <!-- ==================== CREATE EVENT ==================== -->
+        <section>
+          <h2>Creating a Den Event</h2>
+          <div class="columns center">
+            <div class="col-narrow col">
+              <ol class="steps small">
+                <li>
+                  <strong>One-time setup:</strong> set the unit&rsquo;s
+                  <strong>time zone</strong> under unit
+                  <span class="ui">Settings</span>.
+                </li>
+                <li>Click <span class="ui">Calendar</span> in the left nav.</li>
+                <li>
+                  Click a date, then the <span class="ui">+</span> icon (or the
+                  general <span class="ui">+</span> and set the date yourself).
+                </li>
+                <li>
+                  Choose which <strong>calendar(s)</strong> it appears
+                  on&nbsp;&mdash; e.g., both the Pack and your Den.
+                </li>
+              </ol>
+            </div>
+            <div class="col-wide col shot-col">
+              <img
+                class="shot"
+                src="images/calendar-create-event.png"
+                alt="Scoutbook Plus month calendar with event list and the plus button in the top right"
+              />
+              <span class="shot-caption"
+                >Month view &middot; the blue + in the top right adds an
+                event</span
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            Set the time zone once before anyone creates events, or times will
+            be off. It's under the settings gear next to "Currently viewing."
+            Calendar is in the left navigation. Click a date and the plus icon.
+            An event can live on multiple calendars, so a pack hike can sit on
+            the Pack calendar and your Den calendar at the same time. Who can
+            create events and manage attendance depends on your registered or
+            functional position. If you don't see the option, check with your
+            pack's Key 3. Source: "Using Scoutbook Plus Calendar," Scoutbook
+            Knowledge Base.
+          </aside>
+        </section>
+
+        <!-- ==================== EVENT DETAILS ==================== -->
+        <section>
+          <h2>Event Details That Do the Work</h2>
+          <div class="columns center">
+            <div class="col">
+              <ul class="tight">
+                <li>
+                  <strong>Description</strong> is required and
+                  <strong>visible to everyone</strong>.
+                </li>
+                <li>
+                  <strong>Notes / Agenda / Minutes</strong> are
+                  admin-only&nbsp;&mdash; a good home for your meeting plan.
+                </li>
+                <li>
+                  <strong>Permission slip:</strong> optionally require the
+                  standard form.
+                </li>
+                <li><strong>Location:</strong> add an address and map link.</li>
+                <li>
+                  <strong>Reminders:</strong> up to <strong>three</strong>, sent
+                  automatically.
+                </li>
+                <li>
+                  <strong>Attendees:</strong> add your den, plus outside guests.
+                </li>
+              </ul>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/calendar-event-form.png"
+                alt="Event form sections: recurrence, permission slips, RSVP, location, and reminders"
+                style="max-height: 480px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            Description is public. Notes, Agenda and Minutes are only visible to
+            admins. Three reminders is the big win: Scoutbook sends them for
+            you. In Parent Power I talked about emailing reminders at least
+            three days before every den activity. This automates that. The
+            screenshot shows the lower half of the event form: Repeat Event,
+            Required Permission Slips, Event with RSVP, Location / Google Map
+            URL, and Event Reminders. Source: "Using Scoutbook Plus Calendar,"
+            Scoutbook Knowledge Base.
+          </aside>
+        </section>
+
+        <!-- ==================== RSVP ==================== -->
+        <section>
+          <h2>Collecting RSVPs</h2>
+          <div class="columns">
+            <div class="col">
+              <h3>As the leader</h3>
+              <ul class="tight small">
+                <li>
+                  Check <span class="ui">Event with RSVP</span> on the event.
+                </li>
+                <li>
+                  <strong>Add attendees</strong>, or RSVP won&rsquo;t work.
+                </li>
+              </ul>
+              <img
+                class="shot"
+                src="images/rsvp-checkbox.png"
+                alt="Event with RSVP checkbox checked"
+                style="max-height: 110px"
+              />
+            </div>
+            <div class="col">
+              <h3>Track replies</h3>
+              <ul class="tight small">
+                <li>
+                  Yes / No; non-responders show as <strong>Maybe</strong>.
+                </li>
+                <li>
+                  Got a reply by text? Use
+                  <span class="ui">Quick Entry RSVP</span>.
+                </li>
+              </ul>
+              <img
+                class="shot"
+                src="images/rsvp-results.png"
+                alt="Invitees panel with RSVP Yes, No, and Maybe counts and Quick Entry RSVP"
+                style="max-height: 300px"
+              />
+            </div>
+            <div class="col">
+              <h3>For families</h3>
+              <ul class="tight small">
+                <li>Open the event; use the <strong>RSVP</strong> dropdown.</li>
+                <li>
+                  A Scout with a login can RSVP for
+                  <strong>self and parents</strong>.
+                </li>
+              </ul>
+              <img
+                class="shot"
+                src="images/rsvp-member.png"
+                alt="Member view of an event with RSVP dropdown and RSVP Report button"
+                style="max-height: 300px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            RSVP is opt-in per event. Check the "Event with RSVP" box. The most
+            common reason RSVP "doesn't work" is that no attendees were added.
+            Non-responders show up as Maybe, so the Maybe list is exactly who to
+            chase before you buy supplies. Quick Entry RSVP lets you record the
+            replies you get in a group text or at pickup. The RSVP Report button
+            is on any RSVP-enabled event. Sources: "Using Scoutbook Plus
+            Calendar" — Event RSVP; Scoutbook Knowledge Base article on Scouts
+            RSVPing to events.
+          </aside>
+        </section>
+
+        <!-- ==================== ATTENDANCE ==================== -->
+        <section>
+          <h2>After the Event: Attendance</h2>
+          <div class="columns center">
+            <div class="col">
+              <ul>
+                <li>
+                  After the event, invitees automatically become
+                  <strong>&ldquo;attended.&rdquo;</strong>
+                </li>
+                <li>
+                  Edit the list like you edited invitees:
+                  <strong>remove no-shows</strong>,
+                  <strong>add walk-ins</strong>.
+                </li>
+                <li>
+                  Accurate attendance shows exactly
+                  <strong>who needs a make-up</strong>.
+                </li>
+              </ul>
+              <div class="callout">
+                <span class="label">Pair it up</span>Clean up attendance, then
+                run <strong>Unit Quick Entry</strong> for the Scouts who were
+                there. Same five minutes, both records done.
+              </div>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/attendance.png"
+                alt="Invitees and attendees panel with Quick Entry Attendance and counts by Adults, Youths, Den Chiefs"
+                style="max-height: 380px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            After the event, the invitee list becomes the attended list. Leaders
+            can edit it, just like editing invitees. Quick Entry Attendance
+            makes that fast. Workflow: right after the meeting, fix attendance,
+            then go straight to Unit Quick Entry and approve the requirements
+            for the same Scouts. Source: "Using Scoutbook Plus Calendar" —
+            Attendance.
+          </aside>
+        </section>
+
+        <!-- ==================== SECTION: MESSAGING ==================== -->
+        <section class="section-header">
+          <h2>Messaging</h2>
+          <p>Reaching just your den&rsquo;s families</p>
+        </section>
+
+        <!-- ==================== MESSAGING ==================== -->
+        <section>
+          <h2>Emailing Your Den</h2>
+          <div class="columns center">
+            <div class="col">
+              <ol class="steps small">
+                <li>
+                  Click <span class="ui">Messaging</span> in the left menu.
+                </li>
+                <li>
+                  Click into <strong>your Den</strong> to message only that
+                  group, or <span class="ui">Select All</span> for everyone.
+                </li>
+                <li>
+                  Write in the <strong>WYSIWYG editor</strong>: bold, lists, and
+                  links work as-is (no BBCode like legacy Scoutbook).
+                </li>
+                <li>Send.</li>
+              </ol>
+              <div class="callout">
+                <span class="label">Texting</span>Works only for members whose
+                profile has a <strong>mobile number</strong>,
+                <strong>carrier</strong>, and the
+                <strong>opt-in box</strong> checked. Ask families to set it up
+                at the first meeting.
+              </div>
+            </div>
+            <div class="col shot-col">
+              <img
+                class="shot"
+                src="images/message-editor.png"
+                alt="New Email composer with recipients, subject, formatting toolbar, and Youth Protection notice"
+                style="max-height: 460px"
+              />
+            </div>
+          </div>
+          <aside class="notes">
+            Messaging is in the left menu. Clicking into a specific den limits
+            recipients to that den. Select All goes to everyone. The editor is
+            WYSIWYG now. If you used legacy Scoutbook, you no longer need
+            BBCode. Point out the Youth Protection notice at the bottom of the
+            composer: messages to Scouts should always copy a parent or a second
+            adult. Formatting tip from Parent Power: headings, bullets, most
+            important info first, real links. Avoid walls of text. Texting needs
+            the recipient's mobile number, carrier, and an opt-in checkbox in
+            their profile. Get families to set that up early. Sources:
+            "Introduction to Scoutbook Plus for Cub Scout Packs" — Messaging;
+            "Formatting Messages," Scoutbook Knowledge Base; Scouting Forums.
+          </aside>
+        </section>
+
+        <!-- ==================== RHYTHM ==================== -->
+        <section>
+          <h2>Putting It Together: A Den Leader&rsquo;s Rhythm</h2>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 24%">When</th>
+                <th>In Scoutbook Plus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Start of year</strong></td>
+                <td>
+                  Confirm every Scout is <strong>in your den</strong>; save your
+                  roster filter; ask families to set up the Scouting app and
+                  text opt-in.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Each month</strong></td>
+                <td>
+                  Put the month&rsquo;s meetings on the
+                  <strong>Den calendar</strong> with RSVP and reminders; send
+                  one organized <strong>message</strong> covering Den and Pack
+                  activities.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Before a meeting</strong></td>
+                <td>
+                  Check the <strong>RSVP Report</strong>; nudge the
+                  &ldquo;Maybes&rdquo;; clear the
+                  <strong>Pending Items</strong> tab.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>After a meeting</strong></td>
+                <td>
+                  Fix <strong>attendance</strong>, then
+                  <strong>Unit Quick Entry</strong> &rsaquo; Approved for what
+                  you covered.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Before Pack meeting</strong></td>
+                <td>
+                  Hand your Advancement Chair an up-to-date den so awards can be
+                  ordered.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            This is my suggested routine, built from what worked for my den. It
+            isn't an official Scouting America procedure. The idea: if you spend
+            about five minutes after each meeting, advancement never piles up
+            and you're never scrambling before a Pack meeting. Coordinate with
+            your Advancement Chair on when to mark items Awarded, because of the
+            purchase-order behavior we covered.
+          </aside>
+        </section>
+
+        <!-- ==================== RESOURCES ==================== -->
+        <section>
+          <h2>Resources</h2>
+          <ul class="tight small">
+            <li>
+              <strong>Scoutbook Plus login:</strong>
+              <a href="https://advancements.scouting.org"
+                >advancements.scouting.org</a
+              >
+            </li>
+            <li>
+              <strong>Scoutbook Knowledge Base:</strong>
+              <a href="https://help.scoutbook.scouting.org/"
+                >help.scoutbook.scouting.org</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/introduction-to-scoutbook-plus-for-cub-scout-packs/"
+                >Introduction to Scoutbook Plus for Cub Scout Packs</a
+              >: dens, Quick Entry, Pending Items, Messaging
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/awarded-or-approved-options-in-internet-advancement-ia/"
+                >Started, Completed, Approved, Awarded</a
+              >: status definitions
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/using-internet-advancement-calendar-ia/"
+                >Using Scoutbook Plus Calendar</a
+              >: events, RSVP, attendance
+            </li>
+            <li>
+              <a
+                href="https://help.scoutbook.scouting.org/knowledge-base/formatting-messages/"
+                >Formatting Messages</a
+              >
+            </li>
+            <li>
+              <strong>Scouting Forums, Scoutbook category:</strong>
+              <a href="https://discussions.scouting.org/c/scoutbook/28"
+                >discussions.scouting.org/c/scoutbook/28</a
+              >
+              for troubleshooting and known issues
+            </li>
+          </ul>
+          <p class="source">
+            Screenshots courtesy of the Scoutbook Knowledge Base, Scouting
+            America. Scoutbook Plus changes often; screens may differ from what
+            you see today.
+          </p>
+          <aside class="notes">
+            The Knowledge Base is the first stop. The forums are where you'll
+            find known issues and workarounds, like the "whole den at a glance"
+            question. The slides are posted at slides.rtylermalone.com if anyone
+            wants the links.
+          </aside>
+        </section>
+
+        <!-- ==================== Q&A ==================== -->
+        <section class="title-slide">
+          <h1>Questions &amp; Discussion</h1>
+          <p class="subtitle" style="margin-top: 1em">Tyler Malone</p>
+          <p class="byline">Assistant Cubmaster, Pack 3116</p>
+        </section>
+      </div>
+      <!-- /slides -->
+    </div>
+    <!-- /reveal -->
+
+    <!-- Persistent corner logo -->
+    <div class="corner-logo corner-logo-right">
+      <img src="images/CACLogo.webp" alt="Cherokee Area Council" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        showSlideNumber: "speaker",
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        transition: "fade",
+        transitionSpeed: "default",
+        backgroundTransition: "fade",
+        center: true,
+        plugins: [RevealNotes],
+      });
+    </script>
+  </body>
+</html>
